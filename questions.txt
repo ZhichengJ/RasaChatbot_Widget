@@ -1,0 +1,10 @@
+¿Cuánto dura el sonido?
+- Menos de un segundo.
+- Entre 1 y 5 segundos.
+- Mas de 9 segundos.
+¿Se escucha al principio un sonido corto y luego un silenci o un sonido menos intenso?
+- Si
+- No
+¿Hay un sonido inicial con un tono distinto al resto?
+- Si
+- No

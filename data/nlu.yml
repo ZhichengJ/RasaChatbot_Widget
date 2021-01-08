@@ -1,0 +1,151 @@
+version: "2.0"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - yo
+    - goodmorning
+    - goodevening
+    - good afternoon
+    - hola
+    - Buenas
+    - holi
+    - que hay?
+    - Como estas?
+    - Hay alguien ahi?
+
+- intent: goodbye
+  examples: |
+    - good afternoon
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - vale
+    - si
+    - me parece bien
+    - correcto
+    - muy bien
+    - ok
+    - de acuerdo
+    - por supuesto
+    - suena bien
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - no me apetece
+    - la verdad es que no
+    - no demasiado
+    - de ninguna manera
+    - por supuesto que no
+
+- intent: mood_great
+  examples: |
+    - perfect
+    - great
+    - amazing
+    - feeling like a king
+    - wonderful
+    - I am feeling very good
+    - I am great
+    - I am amazing
+    - I am going to save the world
+    - super stoked
+    - extremely good
+    - so so perfect
+    - so good
+    - so perfect
+    - estoy bien
+    - estoy genial
+    - estoy super bien
+    -
+
+- intent: mood_unhappy
+  examples: |
+    - my day was horrible
+    - I am sad
+    - I don't feel very well
+    - I am disappointed
+    - super sad
+    - I'm so sad
+    - sad
+    - very sad
+    - unhappy
+    - not good
+    - not very good
+    - extremly sad
+    - so saad
+    - so sad
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+
+- intent: bot_opciones
+  examples: |
+    - dime las opciones
+    - que opciones tengo
+    - que opciones hay
+    - reiniciar
+    - inicio
+    - empezar de nuevo
+    - volver a empezar
+
+- intent: bot_aprender
+    - quiero aprender
+    - que tipos de sonidos existen
+    - que sonidos hay?
+    - dime todos los sonidos
+    - deseo aprender
+    - me apetece aprender
+
+- intent: bot_clasificar
+    - clasificar
+    - deseo clasificar
+    - quiero clasificar
+    - vamos a clasificar
+    - jugar
+    - quiero jugar
+
+- intent: dame_sonido
+    - dame otro sonido para clasificar
+    - seguir clasificando
+    - quisiera seguir clasificando
+    - quiero otro
+    - dame otro
