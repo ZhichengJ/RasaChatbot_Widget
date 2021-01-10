@@ -3,20 +3,6 @@ version: "2.0"
 nlu:
 - intent: greet
   examples: |
-    - hey
-    - hello
-    - hi
-    - hello there
-    - good morning
-    - good evening
-    - moin
-    - hey there
-    - let's go
-    - hey dude
-    - yo
-    - goodmorning
-    - goodevening
-    - good afternoon
     - hola
     - Buenas
     - holi
@@ -56,6 +42,25 @@ nlu:
     - por supuesto
     - suena bien
 
+- intent: mi_nombre
+  examples: |
+    - [Marcos]{"entity":"nombre","value":"Marcos"}
+    - [Iris]{"entity":"nombre","value":"Iris"}
+    - [Sara]{"entity":"nombre","value":"Sara"}
+    - [Jose]{"entity":"nombre","value":"Jose"}
+    - [Dexter]{"entity":"nombre","value":"Dexter"}
+    - mi nombre es [Marcos]{"entity":"nombre","value":"Marcos"}
+    - mi nombre es [Sara]{"entity":"nombre","value":"Sara"}
+    - mi nombre es [Alberto]{"entity":"nombre","value":"Alberto"}
+    - yo me llamo [Marcos]{"entity":"nombre","value":"Marcos"}
+    - yo me llamo [Sara]{"entity":"nombre","value":"Sara"}
+    - yo me llamo [Alberto]{"entity":"nombre","value":"Alberto"}
+    - me llamo [Marcos]{"entity":"nombre","value":"Marcos"}
+    - me llamo [Sara]{"entity":"nombre","value":"Sara"}
+    - me llamo [Paco]{"entity":"nombre","value":"paco"}
+    - me llamo [Isabel]{"entity":"nombre","value":"isabel"}
+    - me llamo [pedro]{"entity":"nombre","value":"Pedro"}
+
 - intent: deny
   examples: |
     - no
@@ -90,7 +95,6 @@ nlu:
     - estoy bien
     - estoy genial
     - estoy super bien
-    -
 
 - intent: mood_unhappy
   examples: |
@@ -111,10 +115,14 @@ nlu:
 
 - intent: bot_challenge
   examples: |
+    - eres un robot?
+    - eres un humano?
+    - eres un bot?
+    - eres una persona?
+    - estoy hablando con una persona?
+    - estoy hablando con un humano?
     - are you a bot?
-    - are you a human?
-    - am I talking to a bot?
-    - am I talking to a human?
+    - estoy hablando con un bot?
 
 
 - intent: bot_opciones
@@ -127,25 +135,25 @@ nlu:
     - empezar de nuevo
     - volver a empezar
 
-- intent: bot_aprender
-    - quiero aprender
-    - que tipos de sonidos existen
-    - que sonidos hay?
-    - dime todos los sonidos
-    - deseo aprender
-    - me apetece aprender
+# - intent: bot_aprender
+#     - quiero aprender
+#     - que tipos de sonidos existen
+#     - que sonidos hay?
+#     - dime todos los sonidos
+#     - deseo aprender
+#     - me apetece aprender
 
-- intent: bot_clasificar
-    - clasificar
-    - deseo clasificar
-    - quiero clasificar
-    - vamos a clasificar
-    - jugar
-    - quiero jugar
+# - intent: bot_clasificar
+#     - clasificar
+#     - deseo clasificar
+#     - quiero clasificar
+#     - vamos a clasificar
+#     - jugar
+#     - quiero jugar
 
-- intent: dame_sonido
-    - dame otro sonido para clasificar
-    - seguir clasificando
-    - quisiera seguir clasificando
-    - quiero otro
-    - dame otro
+# - intent: dame_sonido
+#     - dame otro sonido para clasificar
+#     - seguir clasificando
+#     - quisiera seguir clasificando
+#     - quiero otro
+#     - dame otro

@@ -4,30 +4,54 @@ intents:
   - greet
   - goodbye
   - affirm
+  - mi_nombre
   - deny
   - mood_great
   - mood_unhappy
   - bot_challenge
+  - bot_opciones
+  - bot_aprender
+  - bot_clasificar
+  - dame_sonido
+
+
+entities:
+  - nombre
+  - respuesta1
+  - respuesta2
+  - respuesta3
+
 
 slots:
-  name:
+  nombre:
     type: text
-    initial_value: "friend"
+    initial_value: "amigo"
   
   sound:
     type: text
     initial_value: "0"
   
-  resp:
+  respuesta1:
+    type: text
+    initial_value: "0"
+
+  respuesta2:
+    type: text
+    initial_value: "0"
+
+  respuesta3:
     type: text
     initial_value: "0"
 
 responses:
+  utter_preguntar_nombre:
+  - text: "¿Cúal es tu nombre?"
+  - text: "¿Como te llamas?"
+
   utter_greet:
-  - text: "Hey! How are you?"
-  - text: "Hola, Como estas?"
-  - text: "Que tal estas?"
-  - text: "Hola, que quieres hacer?"
+  - text: "Hola, que tal"
+  - text: "Como va?"
+  - text: "Hola"
 
   utter_cheer_up:
   - text: "Here is something to cheer you up:"
@@ -37,7 +61,7 @@ responses:
   - text: "Did that help you?"
 
   utter_happy:
-  - text: "Great, carry on!"
+  - text: "{nombre} Great, carry on!"
 
   utter_goodbye:
   - text: "Bye"
@@ -46,5 +70,5 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
 session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+  session_expiration_time: 10
+  carry_over_slots_to_new_session: false

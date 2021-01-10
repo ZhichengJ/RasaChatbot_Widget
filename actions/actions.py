@@ -25,3 +25,12 @@ from rasa_sdk.executor import CollectingDispatcher
 #         dispatcher.utter_message(text="Hello World!")
 
 #         return []
+
+class Action_post(Action):
+def name(self):
+    return 'action_test'
+
+def run(self, dispatcher, tracker, domain):
+    intent = tracker.latest_message['intent'].get('name')
+    # do whatever it takes
+return []
