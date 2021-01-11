@@ -2,15 +2,47 @@ version: "2.0"
 
 stories:
 
-- story: happy path
+# - story: happy path
+#   steps:
+#   - intent: greet
+#   - action: utter_greet
+#   - action: utter_preguntar_nombre
+#   - intent: mi_nombre
+#   - action: utter_happy
+
+
+##########################################################
+################# FLUJOS DE DIALOGO ######################
+##########################################################
+
+- story: hasta dar las opciones disponibles
   steps:
   - intent: greet
   - action: utter_greet
   - action: utter_preguntar_nombre
   - intent: mi_nombre
-  # - intent: mood_great
-  - action: utter_happy
+  - action: utter_opciones
 
+- story: en caso de seleccionar el tutorial
+  steps:
+  - intent: tutorial
+  - action: utter_tutorial
+  - action: utter_eleccion
+
+- story: en caso de que el usuario quiera clasificar
+  steps:
+  - intent: clasificar
+  # Tres preguntas y respuestas, de momento probamos con 1 a ver
+  - action: action_dar_sonido
+  - action: utter_pregunta_uno
+  - intent: responder_uno
+  - action: utter_continuar
+
+- story: en caso de que no quiera clasificar 
+  steps:
+  - intent: deny
+  - action: utter_opciones
+  
 # - story: sad path 1
 #   steps:
 #   - intent: greet

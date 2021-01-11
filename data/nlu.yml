@@ -6,9 +6,30 @@ nlu:
     - hola
     - Buenas
     - holi
-    - que hay?
-    - Como estas?
+    - que hay
     - Hay alguien ahi?
+
+- intent: opciones
+  examples: |
+    - ¿Que puedo hacer?
+    - ¿Que opciones tengo?
+    - Que opciones hay
+    - Que cosas se pueden hacer?
+    - Que hago ahora
+    - Que quieres que haga
+    - Que necesito hacer
+    - ¿Que hay que hacer?
+
+- intent: tutorial
+  examples: |
+    - No se como se clasifica
+    - No se clasificar
+    - Explicame como se clasifica
+    - Enseñame el tutorial
+    - Muestrame el tutorial
+    - Enseñame a clasificar
+    - Como puedo clasificar
+    - Tutorial
 
 - intent: goodbye
   examples: |
@@ -24,14 +45,19 @@ nlu:
     - bye bye
     - see you later
 
+- intent: deny
+  examples: |
+    - no
+    - no me apetece
+    - la verdad es que no
+    - no demasiado
+    - de ninguna manera
+    - por supuesto que no
+    - nunca
+    - jamás
+
 - intent: affirm
   examples: |
-    - yes
-    - y
-    - indeed
-    - of course
-    - that sounds good
-    - correct
     - vale
     - si
     - me parece bien
@@ -41,6 +67,13 @@ nlu:
     - de acuerdo
     - por supuesto
     - suena bien
+
+- intent: sonidos_del_cielo
+  examples: |
+    - De que trata el proyecto
+    - Que es sonidos del cielo
+    - Sonidos del cielo
+    - Que es el proyecto sonidos del cielo
 
 - intent: mi_nombre
   examples: |
@@ -60,21 +93,6 @@ nlu:
     - me llamo [Paco]{"entity":"nombre","value":"paco"}
     - me llamo [Isabel]{"entity":"nombre","value":"isabel"}
     - me llamo [pedro]{"entity":"nombre","value":"Pedro"}
-
-- intent: deny
-  examples: |
-    - no
-    - n
-    - never
-    - I don't think so
-    - don't like that
-    - no way
-    - not really
-    - no me apetece
-    - la verdad es que no
-    - no demasiado
-    - de ninguna manera
-    - por supuesto que no
 
 - intent: mood_great
   examples: |
@@ -113,6 +131,13 @@ nlu:
     - so saad
     - so sad
 
+- intent: clasificar
+  examples: |
+    - clasificar
+    - deseo clasificar
+    - quiero clasificar
+    - vamos a clasificar
+
 - intent: bot_challenge
   examples: |
     - eres un robot?
@@ -135,6 +160,26 @@ nlu:
     - empezar de nuevo
     - volver a empezar
 
+- intent: responder_uno
+  examples: |
+    - Menos de un segundo{"entity":"respuesta1","Menos de 1 segundo"}
+    - Menos de 1 segundo{"entity":"respuesta1","Menos de 1 segundo"}
+    - - 1 segundo{"entity":"respuesta1","Menos de 1 segundo"}
+    - <1 segundo{"entity":"respuesta1","Menos de 1 segundo"}
+    - a {"entity":"respuesta1","Menos de 1 segundo"}
+    - 1 {"entity":"respuesta1","Menos de 1 segundo"}
+    - Entre 1 y 5{"entity":"respuesta1","Entre 1 y 5 segundos"}
+    - Entre uno y cinco{"entity":"respuesta1","Entre 1 y 5 segundos"}
+    - Entre uno y cinco segundos{"entity":"respuesta1","Entre 1 y 5 segundos"}
+    - Entre 1 y 5 segundos{"entity":"respuesta1","Entre 1 y 5 segundos"}
+    - 2 {"entity":"respuesta1","Entre 1 y 5 segundos"}
+    - b {"entity":"respuesta1","Entre 1 y 5 segundos"}
+    - Mas de 9 {"entity":"respuesta1","Mas de 9 segundos"}
+    - Mas de 9 segundos{"entity":"respuesta1","Mas de 9 segundos"}
+    - Mas de nueve {"entity":"respuesta1","Mas de 9 segundos"}  
+    - Mas de nueve segundos{"entity":"respuesta1","Mas de 9 segundos"}
+    - c {"entity":"respuesta1","Mas de 9 segundos"}
+    - 3 {"entity":"respuesta1","Mas de 9 segundos"}
 # - intent: bot_aprender
 #     - quiero aprender
 #     - que tipos de sonidos existen

@@ -2,6 +2,11 @@ version: "2.0"
 
 rules:
 
+- rule: da las opciones disponibles
+  steps:
+  - intent: opciones
+  - action: utter_opciones
+
 - rule: Say goodbye anytime the user says goodbye
   steps:
   - intent: goodbye
@@ -11,3 +16,8 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+
+- rule: Sonidos del Cielo
+  steps:
+  - intent: sonidos_del_cielo
+  - action: utter_sonidos_del_cielo

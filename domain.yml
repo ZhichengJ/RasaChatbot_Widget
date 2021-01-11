@@ -1,18 +1,24 @@
 version: "2.0"
 
+session_config:
+  session_expiration_time: 10
+  carry_over_slots_to_new_session: false
+
 intents:
   - greet
+  - opciones
+  - tutorial
   - goodbye
   - affirm
-  - mi_nombre
   - deny
+  - sonidos_del_cielo
+  - mi_nombre
+  - clasificar
   - mood_great
   - mood_unhappy
   - bot_challenge
   - bot_opciones
-  - bot_aprender
-  - bot_clasificar
-  - dame_sonido
+  - responder_uno
 
 
 entities:
@@ -20,28 +26,7 @@ entities:
   - respuesta1
   - respuesta2
   - respuesta3
-
-
-slots:
-  nombre:
-    type: text
-    initial_value: "amigo"
-  
-  sound:
-    type: text
-    initial_value: "0"
-  
-  respuesta1:
-    type: text
-    initial_value: "0"
-
-  respuesta2:
-    type: text
-    initial_value: "0"
-
-  respuesta3:
-    type: text
-    initial_value: "0"
+  - eco
 
 responses:
   utter_preguntar_nombre:
@@ -69,6 +54,91 @@ responses:
   utter_iamabot:
   - text: "I am a bot, powered by Rasa."
 
-session_config:
-  session_expiration_time: 10
-  carry_over_slots_to_new_session: false
+  utter_opciones:
+  - text: "De momento tengo estas opciones:\n - Tutorial \n - ¿Qué es el proyecto Sonidos del Cielo? \n - Clasificar"
+
+  utter_eleccion:
+  - text: "{nombre} ¿Qué quieres hacer?"
+  - text: "¿Qué te apetece hacer {nombre}?"
+  - text: ¿Qué te gustaria hacer {nombre}?
+  - text: "{nombre} ¿Qué te aptece hacer?"
+  - text: "{nombre} ¿Qué te gustaria hacer?"
+
+  utter_sonidos_del_cielo:
+  - text: "Si quieres saber más sobre el proyecto entra aqui: http://sonidosdelcielo.org/"
+
+  utter_tutorial:
+  - text: "La duración del sonido es la clave para distinguir los tres tipos de estelas.\n
+  BLA BLA BLA..."
+
+  utter_pregunta_uno:
+  - text: "¿Cuánto dura el sonido?"
+  - text: "Menos de un segundo"
+  - text: "Entre uno y cinco segundos"
+  - text: "Más de 9 segundos"
+
+  utter_continuar:
+  - text: "{nombre} ¿Quieres seguir?"
+  - text: "{nombre} ¿Te apetece seguir?"
+  - text: "¿Seguimos {nombre}?"
+  # utter_preguntar_uno:
+  # - text: ¿Cuánto dura el sonido?
+  #   buttons:
+  #     - title: "Menos de un segundo"
+  #       payload: {{"respuesta1":"menor de 1 segundo"}}
+  #     - title: "Entre 1 y 5 segundos"
+        
+  #     - title: "Más de 9 segundos"
+
+# forms:
+#   respuesta1_form:
+#     respuesta1:
+#       - type: from_entity
+#         entity: responder_uno
+
+#   respuesta2_form:
+#     respuesta2:
+#       - type: from_entity
+#         entity: responder_dos
+  
+#   respuesta3_form:
+#     respuesta3:
+#       - type: from_entity
+#         entity: responder_tres
+
+
+
+slots:
+  nombre:
+    type: text
+    initial_value: "amigo"
+  
+  sound:
+    type: text
+    initial_value: "0"
+  
+  respuesta1:
+    type: categorical
+    values:
+      - Menos de un segundo
+      - Entre 1 y 5 segundos
+      - Mas de 9 segundos
+    
+  respuesta2:
+    type: categorical
+    values:
+      - Si 
+      - No
+
+  respuesta3:
+    type: categorical
+    values:
+      - Si 
+      - No
+
+  eco:
+    type: text  
+    initial_value: "0"
+
+actions:
+  - action_dar_sonido
