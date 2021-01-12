@@ -160,26 +160,42 @@ nlu:
     - empezar de nuevo
     - volver a empezar
 
-- intent: responder_uno
+- intent: menos_un_segundo
   examples: |
-    - Menos de un segundo{"entity":"respuesta1","Menos de 1 segundo"}
-    - Menos de 1 segundo{"entity":"respuesta1","Menos de 1 segundo"}
-    - - 1 segundo{"entity":"respuesta1","Menos de 1 segundo"}
-    - <1 segundo{"entity":"respuesta1","Menos de 1 segundo"}
-    - a {"entity":"respuesta1","Menos de 1 segundo"}
-    - 1 {"entity":"respuesta1","Menos de 1 segundo"}
-    - Entre 1 y 5{"entity":"respuesta1","Entre 1 y 5 segundos"}
-    - Entre uno y cinco{"entity":"respuesta1","Entre 1 y 5 segundos"}
-    - Entre uno y cinco segundos{"entity":"respuesta1","Entre 1 y 5 segundos"}
-    - Entre 1 y 5 segundos{"entity":"respuesta1","Entre 1 y 5 segundos"}
-    - 2 {"entity":"respuesta1","Entre 1 y 5 segundos"}
-    - b {"entity":"respuesta1","Entre 1 y 5 segundos"}
-    - Mas de 9 {"entity":"respuesta1","Mas de 9 segundos"}
-    - Mas de 9 segundos{"entity":"respuesta1","Mas de 9 segundos"}
-    - Mas de nueve {"entity":"respuesta1","Mas de 9 segundos"}  
-    - Mas de nueve segundos{"entity":"respuesta1","Mas de 9 segundos"}
-    - c {"entity":"respuesta1","Mas de 9 segundos"}
-    - 3 {"entity":"respuesta1","Mas de 9 segundos"}
+    - menos de un segundo
+    - menos de 1 segundo
+    - menor que 1 segundo
+    - menos de uno
+    - menos de 1
+
+- intent: entre_uno_cinco
+  examples: |
+    - Entre uno y cinco
+    - entre 1 y 5 
+    - entre 1 y 5 segundos
+    - entre uno y 5 segundos
+    - entre los dos
+
+- intent: mas_de_nueve
+  examples: |
+    - mas de 9
+    - mas de 9 segundos
+    - mayor de 9 
+    - mayor de 9 segundos
+    - mas de nueve
+    - mas de nueve segundos
+    - mayor de nueve segundos
+    - mayor de nueve
+
+- intent: clasificar
+  examples: |
+    - clasificar
+    - deseo clasificar
+    - quiero clasificar
+    - vamos a clasificar
+    - jugar
+    - quiero jugar
+    
 # - intent: bot_aprender
 #     - quiero aprender
 #     - que tipos de sonidos existen
@@ -188,13 +204,7 @@ nlu:
 #     - deseo aprender
 #     - me apetece aprender
 
-# - intent: bot_clasificar
-#     - clasificar
-#     - deseo clasificar
-#     - quiero clasificar
-#     - vamos a clasificar
-#     - jugar
-#     - quiero jugar
+
 
 # - intent: dame_sonido
 #     - dame otro sonido para clasificar

@@ -9,34 +9,12 @@
 
 # from typing import Any, Text, Dict, List
 #
-import os, random
+import os, random, json
+import time
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
-#
-#
-# class ActionHelloWorld(Action):
-
-#     def name(self) -> Text:
-#         return "action_hello_world"
-
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-
-#         dispatcher.utter_message(text="Hello World!")
-
-#         return []
-
-class Action_post(Action):
-def name(self):
-    return 'action_test'
-
-def run(self, dispatcher, tracker, domain):
-    intent = tracker.latest_message['intent'].get('name')
-    # do whatever it takes
-return []
-
+from rasa_sdk.events import FollowupAction
 
 ################################################
 # Devuelve un sonido para analizar
@@ -48,9 +26,52 @@ class action_dar_sonido(Action):
     
     def run (self, dispatcher, tracker, domain):
         #Nos da el path absoluto de un sonido aleatorio del directorio sounds
-        path = os.path.abspath(random.choice(os.listdir("../sounds")))
-        dispatcher.utter_message(json_message={"soundUri:"path})
-        return [SlotSet("eco","path")]
+        file = random.choice(os.listdir("sounds"))
+        path = os.path.join("/Users/marcosgamazo/PycharmProjects/chatbot-TFG/sounds",file)
+        dispatcher.utter_message(path)
+        return [SlotSet("eco",os.path.splitext(file)[0])]
+
+class ActionContinuar(Action):
+    def name(self):
+        return 'action_continuar'
+    def run (self, dispatcher, tracker, domain):
+        #time.sleep(2)
+        dispatcher.utter_message("¿Quieres continuar?")
+        return[]
+
+class action_pregunta_uno(Action):
+    def name(self):
+        return 'action_pregunta_uno'
+
+    def run (self, dispatcher, tracker, domain):
+        buttons = []
+        buttons.append({"title": 'Menos de 1 segundo' , "payload": "/menos_un_segundo{'respuesta1':'Menos de 1 segundo'}"})
+        buttons.append({"title": 'Entre 1 y 5 segundos' , "payload": "/entre_uno_cinco{'respuesta1':'Entre 1 y 5 segundos'}"})
+        buttons.append({"title": 'Mas de 9 segundos' , "payload": "/mas_de_nueve{'respuesta1':'Mas de 9 segundos'}"})
+        dispatcher.utter_message(text="¿Cuánto dura el sonido?", buttons=buttons)
+        SlotSet('respuesta1',buttons)
+        #FollowupAction(name='action_listen')        
+        return[FollowupAction(name='action_continuar')]#, FollowupAction(name='action_listen')]
+
+class action_pregunta_dos(Action):
+    def name(self):
+        return 'action_pregunta_dos'
+    def run (self, dispatcher, tracker, domain):
+        buttons = []
+        buttons.append({"title": 'Si' , "payload": "/affirm{'respuesta2':'Si'}"})
+        buttons.append({"title": 'No' , "payload": "/deny{'respuesta2':'No'}"})
+        dispatcher.utter_message(text='¿Se escucha al principio un sonido corto y luego un silencio o un sonido menos intenso?', buttons=buttons)
+        return[SlotSet('respuesta2',buttons),FollowupAction('action_listen')]
+
+class action_pregunta_tres(Action):
+    def name(self):
+        return 'action_pregunta_tres'
+    def run (self, dispatcher, tracker, domain):
+        buttons = []
+        buttons.append({"title": 'Si' , "payload": "/affirm{'respuesta3':'Si'}"})
+        buttons.append({"title": 'No' , "payload": "/deny{'respuesta3':'No'}"})
+        dispatcher.utter_button_message(text='¿Hay un sonido inicial con un tono distinto al resto?', buttons=buttons)
+        return[SlotSet('respuesta3',buttons),FollowupAction('utter_opciones')]
 
 
 ################################################
@@ -59,7 +80,7 @@ class action_dar_sonido(Action):
 
 class ActionPostRespuestas(Action):
     def name(self):
-        return 'action_post_respuestas'
+        return 'action_post_api'
     
     def run(self, dispatcher, tracker, domain):
-        resp1 = tracker.get_slot.
+        resp1 = tracker.get_slo

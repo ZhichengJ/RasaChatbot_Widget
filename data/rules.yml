@@ -16,8 +16,10 @@ rules:
   steps:
   - intent: bot_challenge
   - action: utter_iamabot
+  - action: utter_opciones
 
 - rule: Sonidos del Cielo
   steps:
   - intent: sonidos_del_cielo
   - action: utter_sonidos_del_cielo
+  - action: utter_opciones

@@ -14,12 +14,13 @@ intents:
   - sonidos_del_cielo
   - mi_nombre
   - clasificar
+  - menos_un_segundo
+  - entre_uno_cinco
+  - mas_de_nueve
   - mood_great
   - mood_unhappy
   - bot_challenge
   - bot_opciones
-  - responder_uno
-
 
 entities:
   - nombre
@@ -55,7 +56,15 @@ responses:
   - text: "I am a bot, powered by Rasa."
 
   utter_opciones:
-  - text: "De momento tengo estas opciones:\n - Tutorial \n - ¿Qué es el proyecto Sonidos del Cielo? \n - Clasificar"
+  - text: "Tienes estas opciones {nombre}:"
+    buttons:
+      - title: "Tutorial"
+        payload: \tutorial
+      - title: "¿Qué es el proyecto Sonidos del Cielo?"
+        payload: \sonidos_del_cielo
+      - title: "Clasificar"
+        payload: \clasificar
+  #- text: "De momento tengo estas opciones:\n - Tutorial \n - ¿Qué es el proyecto Sonidos del Cielo? \n - Clasificar"
 
   utter_eleccion:
   - text: "{nombre} ¿Qué quieres hacer?"
@@ -68,19 +77,38 @@ responses:
   - text: "Si quieres saber más sobre el proyecto entra aqui: http://sonidosdelcielo.org/"
 
   utter_tutorial:
-  - text: "La duración del sonido es la clave para distinguir los tres tipos de estelas.\n
-  BLA BLA BLA..."
+  - text: "La duración del sonido es la clave para distinguir los tres tipos de estelas..."
 
   utter_pregunta_uno:
   - text: "¿Cuánto dura el sonido?"
-  - text: "Menos de un segundo"
-  - text: "Entre uno y cinco segundos"
-  - text: "Más de 9 segundos"
+    buttons:
+    - title: Menos de un segundo
+      payload: /menos_un_segundo{"respuesta1":"Menos de 1 segundo"}
+    - title: Entre uno y cinco segundos
+      payload: /entre_uno_cinco{"respuesta1":"Entre 1 y 5 segundos"}
+    - title: Mas de 9 segundos
+      payload: /mas_de_nueve{"respuesta1":"Mas de 9 segundos"}
 
+  utter_pregunta_dos:
+  - text: "Se escucha al principio un sonido corto y luego un silencio o un sonido menos intenso?"
+    buttons:
+    - title: Si
+      payload: /affirm{"respuesta2":"Si"}
+    - title: No
+      payload: /deny{"respuesta2":"No"}
+    
+  utter_pregunta_tres:
+  - text: "¿Hay un sonido inicial con un tono distinto al resto?"
+    buttons:
+    - title: Si
+      payload: /affirm{"respuesta3":"Si"}
+    - title: No
+      payload: /deny{"respuesta3":"No"}
+    
   utter_continuar:
-  - text: "{nombre} ¿Quieres seguir?"
-  - text: "{nombre} ¿Te apetece seguir?"
-  - text: "¿Seguimos {nombre}?"
+  - text: "¿Quieres seguir?"
+
+
   # utter_preguntar_uno:
   # - text: ¿Cuánto dura el sonido?
   #   buttons:
@@ -106,7 +134,11 @@ responses:
 #       - type: from_entity
 #         entity: responder_tres
 
-
+# forms:
+#   clasificacion_form:
+#     nombre:
+#       - type: from_entity
+#       entity: 
 
 slots:
   nombre:
@@ -142,3 +174,7 @@ slots:
 
 actions:
   - action_dar_sonido
+  - action_pregunta_uno
+  - action_pregunta_dos
+  - action_pregunta_tres
+  - action_continuar
