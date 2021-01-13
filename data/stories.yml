@@ -36,8 +36,8 @@ stories:
   - intent: clasificar
   - action: action_dar_sonido
   - action: utter_pregunta_uno
-  - action: action_listen
-  - action: action_continuar
+  #- action: action_listen
+  - action: utter_pregunta_dos
 
 #######Bifurcación antes de la segunda pregunta
   - intent: affirm

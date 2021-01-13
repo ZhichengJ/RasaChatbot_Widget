@@ -51,7 +51,7 @@ class action_pregunta_uno(Action):
         dispatcher.utter_message(text="¿Cuánto dura el sonido?", buttons=buttons)
         SlotSet('respuesta1',buttons)
         #FollowupAction(name='action_listen')        
-        return[FollowupAction(name='action_continuar')]#, FollowupAction(name='action_listen')]
+        return[FollowupAction(name='action_pregunta_dos')]#, FollowupAction(name='action_listen')]
 
 class action_pregunta_dos(Action):
     def name(self):

@@ -64,7 +64,6 @@ responses:
         payload: \sonidos_del_cielo
       - title: "Clasificar"
         payload: \clasificar
-  #- text: "De momento tengo estas opciones:\n - Tutorial \n - ¿Qué es el proyecto Sonidos del Cielo? \n - Clasificar"
 
   utter_eleccion:
   - text: "{nombre} ¿Qué quieres hacer?"
@@ -144,10 +143,6 @@ slots:
   nombre:
     type: text
     initial_value: "amigo"
-  
-  sound:
-    type: text
-    initial_value: "0"
   
   respuesta1:
     type: categorical
