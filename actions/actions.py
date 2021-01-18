@@ -11,6 +11,7 @@
 #
 import os, random, json
 import time
+import requests
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
@@ -83,4 +84,20 @@ class ActionPostRespuestas(Action):
         return 'action_post_api'
     
     def run(self, dispatcher, tracker, domain):
-        resp1 = tracker.get_slo
+        #url = 'http://138.100.100.143:3001/clasificaciones/'
+        url = 'http://127.0.0.1:3000/clasificaciones/'
+        headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+        nombre = tracker.get_slot('nombre')
+        respuesta1 = tracker.get_slot('respuesta1')
+        respuesta2 = tracker.get_slot('respuesta2')
+        respuesta3 = tracker.get_slot('respuesta3')
+        eco = tracker.get_slot('eco')
+        query = '{"_id":"' + str(eco) + '",'
+
+        if nombre is not None:
+            query += '"idUsuario":"' + str(nombre) + '",'
+    
+        query += '"Respuesta1":"' + str(respuesta1) + '",' + '"Respuesta2":"' + str(respuesta2) + '",' + '"Respuesta3":"' + str(respuesta3) + '"}'
+        r = requests.post(url, data= query, headers=headers)
+        print(r.status_code)
+        return
