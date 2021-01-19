@@ -35,23 +35,35 @@ stories:
   steps:
   - intent: clasificar
   - action: action_dar_sonido
-  - action: utter_pregunta_uno
-  #- action: action_listen
-  - action: utter_pregunta_dos
+  - action: action_pregunta_uno
+
+
+- story: segunda pregunta
+  steps:
+  - intent: pregunta_dos
+  - action: action_pregunta_dos
+
+- story: tercera pregunta
+  steps:
+  - intent: pregunta_tres
+  - action: action_pregunta_tres
+  - intent: post_api
+  - action: action_post_api
+
 
 #######Bifurcación antes de la segunda pregunta
-  - intent: affirm
-  - action: action_pregunta_dos
-  - action: utter_continuar
+  # - intent: affirm
+  # - action: action_pregunta_dos
+  # - action: utter_continuar
 
 ###### Negacion antes de la segunda pregunta
-  - intent: deny
-  - action: utter_opciones
+  # - intent: deny
+  # - action: utter_opciones
 
 #######Bifurcación antes de la tercera pregunta
-  - intent: affirm
-  - action: action_pregunta_tres
-  - action: utter_goodbye
+  # - intent: affirm
+  # - action: action_pregunta_tres
+  # - action: utter_goodbye
 
 
   #- action: action_pregunta_tres
@@ -64,10 +76,10 @@ stories:
   #- intent: responder_uno
   #- action: utter_continuar
 
-- story: en caso de que no quiera clasificar 
-  steps:
-  - intent: deny
-  - action: utter_opciones
+# - story: en caso de que no quiera clasificar 
+#   steps:
+#   - intent: deny
+#   - action: utter_opciones
   
 # - story: sad path 1
 #   steps:

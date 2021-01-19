@@ -195,16 +195,40 @@ nlu:
     - vamos a clasificar
     - jugar
     - quiero jugar
-    
-# - intent: bot_aprender
-#     - quiero aprender
-#     - que tipos de sonidos existen
-#     - que sonidos hay?
-#     - dime todos los sonidos
-#     - deseo aprender
-#     - me apetece aprender
 
+- intent: pregunta_dos
+  examples: |
+    - dame la segunda pregunta
+    - quiero la segunda pregunta 
+    - pregunta dos
+    - pregunta 2
+    - segunda pregunta 
+    - 2ª pregunta
+    - 2 pregunta
+    - dos pregunta
+    - me puedes dar la segunda pregunta
+    - dame la pregunta dos
+    - dame la pregunta 2
 
+- intent: pregunta_tres
+  examples: |
+    - dame la tercera pregunta
+    - quiero la tercera pregunta 
+    - pregunta tres
+    - pregunta 3
+    - tercera pregunta 
+    - 3ª pregunta
+    - 3 pregunta
+    - tres pregunta
+    - me puedes dar la tercera pregunta
+    - dame la pregunta tres
+    - dame la pregunta 3 
+
+  
+- intent: post_api
+    - postear en api
+    - guardar en api
+    - post api
 
 # - intent: dame_sonido
 #     - dame otro sonido para clasificar
