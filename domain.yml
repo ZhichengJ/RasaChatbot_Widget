@@ -24,7 +24,7 @@ intents:
   - pregunta_dos
   - pregunta_tres
   - post_api
-
+  - otro_sonido
 entities:
   - nombre
   - respuesta1
@@ -67,6 +67,8 @@ responses:
         payload: \sonidos_del_cielo
       - title: "Clasificar"
         payload: \clasificar
+      - title: "Salir"
+        payload: \action_session_start
 
   utter_eleccion:
   - text: "{nombre} ¿Qué quieres hacer?"
@@ -81,101 +83,57 @@ responses:
   utter_tutorial:
   - text: "La duración del sonido es la clave para distinguir los tres tipos de estelas..."
 
-  utter_pregunta_uno:
-  - text: "¿Cuánto dura el sonido?"
-    buttons:
-    - title: Menos de un segundo
-      payload: /pregunta_dos{"respuesta1":"Menos de 1 segundo"}
-    - title: Entre uno y cinco segundos
-      payload: /pregunta_dos{"respuesta1":"Entre 1 y 5 segundos"}
-    - title: Mas de 9 segundos
-      payload: /pregunta_dos{"respuesta1":"Mas de 9 segundos"}
+  # utter_pregunta_uno:
+  # - text: "¿Cuánto dura el sonido?"
+  #   buttons:
+  #   - title: Menos de un segundo
+  #     payload: /pregunta_dos{{"respuesta1":"Menos de 1 segundo"}}
+  #   - title: Entre uno y cinco segundos
+  #     payload: /pregunta_dos{{"respuesta1":"Entre 1 y 5 segundos"}}
+  #   - title: Mas de 9 segundos
+  #     payload: /pregunta_dos{{"respuesta1":"Mas de 9 segundos"}}
 
-  utter_pregunta_dos:
-  - text: "Se escucha al principio un sonido corto y luego un silencio o un sonido menos intenso?"
-    buttons:
-    - title: Si
-      payload: \pregunta_tres{"respuesta2":"Si"}
-    - title: No
-      payload: \pregunta_tres{"respuesta2":"No"}
+  # utter_pregunta_dos:
+  # - text: "Se escucha al principio un sonido corto y luego un silencio o un sonido menos intenso?"
+  #   buttons:
+  #   - title: Si
+  #     payload: \pregunta_tres{{"respuesta2":"Si"}}
+  #   - title: No
+  #     payload: \pregunta_tres{{"respuesta2":"No"}}
     
-  utter_pregunta_tres:
-  - text: "¿Hay un sonido inicial con un tono distinto al resto?"
-    buttons:
-    - title: Si
-      payload: \action_post_api{"respuesta3":"Si"}
-    - title: No
-      payload: \action_post_api{"respuesta3":"No"}
+  # utter_pregunta_tres:
+  # - text: "¿Hay un sonido inicial con un tono distinto al resto?"
+  #   buttons:
+  #   - title: Si
+  #     payload: \action_post_api{{"respuesta3":"Si"}}
+  #   - title: No
+  #     payload: \action_post_api{{"respuesta3":"No"}}
     
   utter_continuar:
   - text: "¿Quieres seguir?"
+    buttons:
+    - title: Si
+      payload: \clasificar
+    - title: No
+      payload: \utter_opciones
 
-
-  # utter_preguntar_uno:
-  # - text: ¿Cuánto dura el sonido?
-  #   buttons:
-  #     - title: "Menos de un segundo"
-  #       payload: {{"respuesta1":"menor de 1 segundo"}}
-  #     - title: "Entre 1 y 5 segundos"
-        
-  #     - title: "Más de 9 segundos"
-
-# forms:
-#   respuesta1_form:
-#     respuesta1:
-#       - type: from_entity
-#         entity: responder_uno
-
-#   respuesta2_form:
-#     respuesta2:
-#       - type: from_entity
-#         entity: responder_dos
-  
-#   respuesta3_form:
-#     respuesta3:
-#       - type: from_entity
-#         entity: responder_tres
-
-# forms:
-#   clasificacion_form:
-#     nombre:
-#       - type: from_entity
-#       entity: 
 
 slots:
   nombre:
     type: text
-    initial_value: "amigo"
   
-    respuesta1:
-      type: text
-    respuesta2:
-      type: text
-    respuesta3:
-      type: text
-  
-  # respuesta1:
-  #   type: categorical
-  #   values:
-  #     - Menos de un segundo
-  #     - Entre 1 y 5 segundos
-  #     - Mas de 9 segundos
+  respuesta1:
+    type: text
     
-  # respuesta2:
-  #   type: categorical
-  #   values:
-  #     - Si 
-  #     - No
+  respuesta2:
+    type: text
 
-  # respuesta3:
-  #   type: categorical
-  #   values:
-  #     - Si 
-  #     - No
-
+  respuesta3:
+    type: text
+    
   eco:
-    type: text  
-    initial_value: "0"
+    type: text
+    
 
 actions:
   - action_dar_sonido

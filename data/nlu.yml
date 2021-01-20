@@ -230,9 +230,9 @@ nlu:
     - guardar en api
     - post api
 
-# - intent: dame_sonido
-#     - dame otro sonido para clasificar
-#     - seguir clasificando
-#     - quisiera seguir clasificando
-#     - quiero otro
-#     - dame otro
+- intent: otro_sonido
+    - dame otro sonido para clasificar
+    - seguir clasificando
+    - quisiera seguir clasificando
+    - quiero otro
+    - dame otro
