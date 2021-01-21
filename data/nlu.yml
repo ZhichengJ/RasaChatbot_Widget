@@ -236,3 +236,11 @@ nlu:
     - quisiera seguir clasificando
     - quiero otro
     - dame otro
+
+- intent: no_seguir
+  examples: |
+    - no quiero seguir
+    - quiero parar
+    - basta por favor
+    - ya no quiero mas
+    - no me apetece seguir

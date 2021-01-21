@@ -39,7 +39,12 @@ stories:
   - intent: post_api
   - action: action_post_api
   - action: utter_continuar #TODO: Chequear esto
+  - action: action_reset
 
+- story: continuar
+  steps:
+  - intent: no_seguir
+  - action: action_reset
 
 #######Bifurcación antes de la segunda pregunta
   # - intent: affirm

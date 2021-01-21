@@ -18,6 +18,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
 from rasa_sdk.events import FollowupAction
+from rasa_sdk.events import AllSlotsReset
 
 ################################################
 # Devuelve un sonido para analizar
@@ -97,6 +98,18 @@ class action_pregunta_tres(Action):
         return[SlotSet('respuesta3', buttons), FollowupAction('post_api')]
 
 
+class action_reset(Action):
+    def name(self):
+        return 'action_reset'
+
+    def run(self, dispatcher, tracker, domain):
+        dispatcher.utter_message(tracker.get_slot('respuesta1'))
+        dispatcher.utter_message(tracker.get_slot('respuesta2'))
+        dispatcher.utter_message(tracker.get_slot('respuesta3'))
+        dispatcher.utter_message(tracker.get_slot('eco'))
+        dispatcher.utter_message(tracker.get_slot('nombre'))
+        return[AllSlotsReset(), FollowupAction('action_restart')]
+
 ################################################
 # Post a la API con las respuestas del usuario
 ################################################
@@ -125,4 +138,4 @@ class action_post_api(Action):
         #print(query)
         r = requests.post(url, data=query, headers=headers)
         print(r.status_code)
-        return [FollowupAction('action_continuar')]
+        return [AllSlotsReset(),FollowupAction('action_continuar')]

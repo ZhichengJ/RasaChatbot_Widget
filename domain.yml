@@ -68,7 +68,7 @@ responses:
       - title: "Clasificar"
         payload: \clasificar
       - title: "Salir"
-        payload: \action_session_start
+        payload: \action_restart
 
   utter_eleccion:
   - text: "{nombre} ¿Qué quieres hacer?"
@@ -115,7 +115,7 @@ responses:
     - title: Si
       payload: \clasificar
     - title: No
-      payload: \utter_opciones
+      payload: \no_seguir
 
 
 slots:
@@ -142,3 +142,4 @@ actions:
   - action_pregunta_tres
   - action_continuar
   - action_post_api
+  - action_reset
