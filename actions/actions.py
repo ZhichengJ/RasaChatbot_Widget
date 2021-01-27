@@ -119,8 +119,8 @@ class action_post_api(Action):
         return 'action_post_api'
 
     def run(self, dispatcher, tracker, domain):
-        #url = 'http://138.100.100.143:3001/clasificaciones/'
-        url = 'http://127.0.0.1:3000/clasificaciones/'
+        url = 'http://138.100.100.143:3001/clasificaciones/'
+        #url = 'http://127.0.0.1:3000/clasificaciones/'
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
         nombre = tracker.get_slot('nombre')
         respuesta1 = tracker.get_slot('respuesta1')[0]['title']
@@ -138,4 +138,9 @@ class action_post_api(Action):
         #print(query)
         r = requests.post(url, data=query, headers=headers)
         print(r.status_code)
-        return [AllSlotsReset(),FollowupAction('action_continuar')]
+        #Reseteamos los valores de los slots
+        SlotSet("respuesta1","None")
+        SlotSet("respuesta2","None")
+        SlotSet("respuesta3","None")
+        SlotSet("eco","None")
+        return []

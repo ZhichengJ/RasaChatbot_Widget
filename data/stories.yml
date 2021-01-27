@@ -37,8 +37,8 @@ stories:
   - action: action_pregunta_tres
   - intent: post_api
   - action: action_post_api
-  - action: utter_continuar #TODO: Chequear esto
-  - action: action_reset
+  #- action: utter_continuar #TODO: Chequear esto
+  #- action: action_reset
   - action: utter_opciones
 
 - story: continuar
