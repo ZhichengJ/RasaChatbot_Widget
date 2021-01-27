@@ -226,11 +226,13 @@ nlu:
 
   
 - intent: post_api
+  examples: |
     - postear en api
     - guardar en api
     - post api
 
 - intent: otro_sonido
+  examples: |
     - dame otro sonido para clasificar
     - seguir clasificando
     - quisiera seguir clasificando

@@ -25,6 +25,7 @@ intents:
   - pregunta_tres
   - post_api
   - otro_sonido
+  - no_seguir
 entities:
   - nombre
   - respuesta1

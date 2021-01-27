@@ -4,7 +4,6 @@ version: "2.0"
 ################# FLUJOS DE DIALOGO ######################
 ##########################################################
 stories:
-- story: todo ok
 
 - story: hasta dar las opciones disponibles
   steps:
@@ -40,6 +39,7 @@ stories:
   - action: action_post_api
   - action: utter_continuar #TODO: Chequear esto
   - action: action_reset
+  - action: utter_opciones
 
 - story: continuar
   steps:
