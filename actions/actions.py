@@ -14,6 +14,7 @@ import random
 import json
 import time
 import requests
+import logging
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
@@ -25,17 +26,33 @@ from rasa_sdk.events import AllSlotsReset
 ################################################
 
 
+# class action_dar_sonido(Action):
+#     def name(self):
+#         return 'action_dar_sonido'
+
+#     def run(self, dispatcher, tracker, domain):
+#         #Nos da el path absoluto de un sonido aleatorio del directorio sounds
+#         file = random.choice(os.listdir("sounds"))
+#         path = os.path.join(
+#             "/Users/marcosgamazo/PycharmProjects/chatbot-TFG/sounds", file)
+#         dispatcher.utter_message(path)
+#         return [SlotSet("eco", os.path.splitext(file)[0])]
+
+logger = logging.getLogger(__name__)
+
 class action_dar_sonido(Action):
     def name(self):
         return 'action_dar_sonido'
 
     def run(self, dispatcher, tracker, domain):
         #Nos da el path absoluto de un sonido aleatorio del directorio sounds
-        file = random.choice(os.listdir("sounds"))
-        path = os.path.join(
-            "/Users/marcosgamazo/PycharmProjects/chatbot-TFG/sounds", file)
-        dispatcher.utter_message(path)
-        return [SlotSet("eco", os.path.splitext(file)[0])]
+        #url = 'http://127.0.0.1:3000/sonidos'
+        url = 'http://138.100.100.143:3001/sonidos'
+        r = requests.get(url,'policy=random')
+        decoded = json.loads(r.text)
+        dispatcher.utter_message(decoded["Ruta"])
+        #dispatcher.utter_message(decoded['Ruta'])
+        return [SlotSet("eco", decoded["_id"])]
 
 class ActionContinuar(Action):
     def name(self):
@@ -122,25 +139,52 @@ class action_post_api(Action):
         url = 'http://138.100.100.143:3001/clasificaciones/'
         #url = 'http://127.0.0.1:3000/clasificaciones/'
         headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+        eco = tracker.get_slot('eco')
+        nClasificaciones = getClasificaciones(eco) + 1
+        #logger.debug(type(nClasificaciones))
+        #logger.debug("----------------------------------------------")
+        #logger.debug("Las clasificaciones del eco son: " + str(nClasificaciones))
+
+        #dispatcher.utter_message(nClasificaciones)
+        
         nombre = tracker.get_slot('nombre')
         respuesta1 = tracker.get_slot('respuesta1')[0]['title']
         respuesta2 = tracker.get_slot('respuesta2')[0]['title']
         respuesta3 = tracker.get_slot('respuesta3')[0]['title']
-        eco = tracker.get_slot('eco')
-
-        query = '{"_id":"' + str(eco) + '",'
-
+        
+        query_Dict ={}
         if nombre is not None:
-            query += '"idUsuario":"' + str(nombre) + '",'
-
-        query += '"Respuesta1":"' + str(respuesta1) + '",' + '"Respuesta2":"' + str(
-            respuesta2) + '",' + '"Respuesta3":"' + str(respuesta3) + '"}'
-        #print(query)
-        r = requests.post(url, data=query, headers=headers)
-        print(r.status_code)
+            query_Dict['_id'] = eco
+        query_Dict['Respuesta1'] = respuesta1
+        query_Dict['Respuesta2'] = respuesta2
+        query_Dict['Respuesta3'] = respuesta3
+        
+        logger.debug("-----------ANTES---------------")
+        logger.debug(nClasificaciones)
+        
+        r = requests.post(url, data=json.dumps(query_Dict), headers=headers)
+        actualizarClasificacion(eco, nClasificaciones)
         #Reseteamos los valores de los slots
         SlotSet("respuesta1","None")
         SlotSet("respuesta2","None")
         SlotSet("respuesta3","None")
         SlotSet("eco","None")
         return []
+
+def getClasificaciones(eco):
+    url = 'http://138.100.100.143:3001/ecos/' + eco
+    #url = 'http://127.0.0.1:3000/ecos/'+ eco
+    r = requests.get(url)
+    decode = json.loads(r.text)
+    #logger.debug(str(r.text))
+    clasificaciones = decode["nClasificaciones"]
+    return clasificaciones
+
+def actualizarClasificacion(eco, clasificaciones):
+    url = 'http://138.100.100.143:3001/ecos/' + eco
+    #url = 'http://127.0.0.1:3000/ecos/'+ eco
+    headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+    query={}
+    query['_id']=eco
+    query['nClasificaciones']=clasificaciones
+    r = requests.patch(url, data =json.dumps(query),headers=headers) 
