@@ -211,15 +211,15 @@ function setBotResponse(response) {
 
                 //check if the response contains "text"
                 if (response[i].hasOwnProperty("text")) {
-                    // if(response[i].text.endsWith("wav")){
-                    //     sound_url = response[i].text;
-                    //     var BotResponse = '<figure><audio autoplay controls src="'+ response[i].text + '"></audio></figure>' + '</p><div class="clearfix">';
-                    //     $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
-                    // }
-                    // else{
+                    if(response[i].text.endsWith("wav")){
+                        sound_url = response[i].text;
+                        var BotResponse = '<figure><audio autoplay controls src="'+ response[i].text + '"></audio></figure>' + '</p><div class="clearfix">';
+                        $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
+                    }
+                    else{
                         var BotResponse = '<img class="botAvatar" src="./static/img/sara_avatar.png"/><p class="botMsg">' + response[i].text + '</p><div class="clearfix"></div>';
                         $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
-                    //}
+                    }
                 }
 
                 //check if the response contains "images"

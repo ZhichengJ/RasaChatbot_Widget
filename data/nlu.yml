@@ -22,13 +22,9 @@ nlu:
 
 - intent: tutorial
   examples: |
-    - No se como se clasifica
-    - No se clasificar
-    - Explicame como se clasifica
+    - Explicame como se hace
     - Enseñame el tutorial
     - Muestrame el tutorial
-    - Enseñame a clasificar
-    - Como puedo clasificar
     - Tutorial
 
 - intent: goodbye
@@ -227,6 +223,7 @@ nlu:
   
 - intent: post_api
   examples: |
+    - post en api
     - postear en api
     - guardar en api
     - post api
