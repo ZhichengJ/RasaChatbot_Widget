@@ -15,6 +15,7 @@ import json
 import time
 import requests
 import logging
+from datetime import datetime; 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
@@ -39,7 +40,7 @@ from rasa_sdk.events import AllSlotsReset
 #         return [SlotSet("eco", os.path.splitext(file)[0])]
 
 logger = logging.getLogger(__name__)
-headers = {'Content-type': 'application/json', 'Accept': 'text/plain', 'Access-Control-Allow-Origin':'*'}
+headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}#, 'Access-Control-Allow-Origin':'*'}
 
 class action_dar_sonido(Action):
     def name(self):
@@ -47,13 +48,13 @@ class action_dar_sonido(Action):
 
     def run(self, dispatcher, tracker, domain):
         #Nos da el path absoluto de un sonido aleatorio del directorio sounds
-        url = 'http://host.docker.internal:3000/sonidos?policy=random'  #Esta linea se utiliza en caso de que no se realice un despliegue en docker
-        #url = 'http://localhost:3000/sonidos?policy=random'
-        #url = 'http://138.100.100.143:3001/sonidos?policy=random'
+        #url = 'http://host.docker.internal:3000/sonidos?policy=random'  
+        #url = 'http://localhost:3000/sonidos?policy=random' #Esta linea se utiliza en caso de que no se realice un despliegue en docker
+        url = 'http://138.100.100.143:3001/sonidos?policy=random'
         r = requests.get(url, headers=headers)
         decoded = json.loads(r.text)
         dispatcher.utter_message(decoded["Ruta"])
-        #dispatcher.utter_message(decoded["_id"])
+        dispatcher.utter_message(decoded["_id"])
         return [SlotSet("eco", decoded["_id"])]
 
 # class ActionContinuar(Action):
@@ -115,26 +116,26 @@ class action_dar_sonido(Action):
 #         dispatcher.utter_message(
 #             text='¿Hay un sonido inicial con un tono distinto al resto?', buttons=buttons)
 #         return[]
+# class action_reset(Action):
+#     def name(self):
+#         return 'action_reset'
 
-class action_reset(Action):
-    def name(self):
-        return 'action_reset'
-
-    def run(self, dispatcher, tracker, domain):
-        dispatcher.utter_message(tracker.get_slot('respuesta1'))
-        dispatcher.utter_message(tracker.get_slot('respuesta2'))
-        dispatcher.utter_message(tracker.get_slot('respuesta3'))
-        dispatcher.utter_message(tracker.get_slot('eco'))
-        dispatcher.utter_message(tracker.get_slot('nombre'))
-        return[AllSlotsReset(), FollowupAction('action_restart')]
+#     def run(self, dispatcher, tracker, domain):
+#         dispatcher.utter_message(tracker.get_slot('respuesta1'))
+#         dispatcher.utter_message(tracker.get_slot('respuesta2'))
+#         dispatcher.utter_message(tracker.get_slot('respuesta3'))
+#         dispatcher.utter_message(tracker.get_slot('eco'))
+#         dispatcher.utter_message(tracker.get_slot('nombre'))
+#         return[AllSlotsReset(), FollowupAction('action_restart')]
 
 ################################################
 # Post a la API con las respuestas del usuario
 ################################################
 
 def getClasificaciones(eco):
-    #url = 'http://138.100.100.143:3001/ecos/' + eco
-    url = 'http://host.docker.internal:3000/ecos/' + eco  #Esta linea se utiliza en caso de que no se realice un despliegue en docker
+    url = 'http://138.100.100.143:3001/ecos/' + eco
+    #url = 'http://127.0.0.1:3000/ecos/' + eco
+    #url = 'http://host.docker.internal:3000/ecos/' + eco  #Esta linea se utiliza en caso de que no se realice un despliegue en docker
     r = requests.get(url,headers=headers)
     decode = json.loads(r.text)
     #logger.debug(str(r.text))
@@ -147,10 +148,11 @@ class action_post_api(Action):
         return 'action_post_api'
 
     def run(self, dispatcher, tracker, domain):
-        #url = 'http://138.100.100.143:3001/clasificaciones/'
+        url = 'http://138.100.100.143:3001/clasificaciones/'
         #url = 'http://127.0.0.1:3000/clasificaciones/'  #Esta linea se utiliza en caso de que no se realice un despliegue en docker
-        url = 'http://host.docker.internal:3000/clasificaciones/'
-        
+        #url = 'http://host.docker.internal:3000/clasificaciones/'
+
+        query_Dict ={}
         eco = tracker.get_slot('eco')
         nClasificaciones = getClasificaciones(eco) + 1
 
@@ -159,44 +161,43 @@ class action_post_api(Action):
         nombre = tracker.get_slot('nombre')
         message = tracker.latest_message['text']
 
-        logger.debug(tracker.get_slot('respuesta1'))
-        logger.debug(tracker.get_slot('respuesta2'))
-        logger.debug(tracker.get_slot('respuesta3'))
+        #logger.debug(tracker.get_slot('respuesta1'))
+        #logger.debug(tracker.get_slot('respuesta2'))
+        #logger.debug(tracker.get_slot('respuesta3'))
 
-        respuesta1 = tracker.get_slot('respuesta1')#[0]['title']
-        respuesta2 = tracker.get_slot('respuesta2')#[0]['title']
-        respuesta3 = tracker.get_slot('respuesta3')#[0]['title']
+        respuesta1 = tracker.get_slot('respuesta1')
+        respuesta2 = tracker.get_slot('respuesta2')
+        respuesta3 = tracker.get_slot('respuesta3')
         
-        query_Dict ={}
-        if nombre is not None:
-            query_Dict['nombre'] = nombre    
-        #query_Dict['_id'] = #TimeStamp
+        #dispatcher.utter_message("RESPUESTA1: "+tracker.get_slot('respuesta1'))
+        #dispatcher.utter_message("RESPUESTA2: "+ tracker.get_slot('respuesta2'))
+        #dispatcher.utter_message("RESPUESTA3: " + tracker.get_slot('respuesta3'))
+        #dispatcher.utter_message("ECO: " +  eco)
+        
+        query_Dict['_id'] = datetime.now().strftime("%Y-%m-%d_%H:%M:%S")     
         query_Dict['idEco'] = eco
+        query_Dict['Nombre'] = nombre
         query_Dict['Respuesta1'] = respuesta1
         query_Dict['Respuesta2'] = respuesta2
         query_Dict['Respuesta3'] = respuesta3
         
-        logger.debug("Clasificaciones: " + str(nClasificaciones))
+        #logger.debug("Clasificaciones: " + str(nClasificaciones))
         
         r = requests.post(url, data=json.dumps(query_Dict), headers=headers)
+        #actualizamos la clasificacion
         actualizarClasificacion(eco, nClasificaciones)
         
         #Reseteamos los valores de los slots
-        SlotSet("respuesta1","None")
-        SlotSet("respuesta2","None")
-        SlotSet("respuesta3","None")
-        SlotSet("eco","None")
-        return []
+        return [SlotSet("respuesta1",None),SlotSet("respuesta2",None),SlotSet("respuesta3",None),SlotSet("eco",None)]
 
 def actualizarClasificacion(eco, clasificaciones):
-    #url = 'http://138.100.100.143:3001/ecos/' + eco
+    url = 'http://138.100.100.143:3001/ecos/' + eco
     #url = 'http://127.0.0.1:3000/ecos/'+ eco  #Esta linea se utiliza en caso de que no se realice un despliegue en docker
-    url = 'http://host.docker.internal:3000/ecos/'+ eco
+    #url = 'http://host.docker.internal:3000/ecos/'+ eco
 
     #headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
     query={}
-    query['_id']=eco
     query['nClasificaciones']=clasificaciones
-    logger.debug("Respuesta")
-    r = requests.patch(url, data =json.dumps(query),headers=headers) 
+    #logger.debug("Respuesta")
+    r = requests.patch(url, data =json.dumps(query),headers=headers)
     return
