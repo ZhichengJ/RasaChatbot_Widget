@@ -68,8 +68,8 @@ responses:
         payload: \sonidos_del_cielo
       - title: "Clasificar"
         payload: \clasificar
-      - title: "Salir"
-        payload: \action_restart
+      # - title: "Salir"
+      #   payload: \action_restart
 
   utter_eleccion:
   - text: "{nombre} ¿Qué quieres hacer?"
