@@ -23,21 +23,24 @@ stories:
   steps:
   - intent: clasificar
   - action: action_dar_sonido
-  - action: action_pregunta_uno
+  - action: utter_pregunta_uno
 
 
 - story: segunda pregunta
   steps:
   - intent: pregunta_dos
-  - action: action_pregunta_dos
+  - action: utter_pregunta_dos
 
 - story: tercera pregunta
   steps:
   - intent: pregunta_tres
-  - action: action_pregunta_tres
+  - action: utter_pregunta_tres
+
+- story: postear api
+  steps:
   - intent: post_api
   - action: action_post_api
-  #- action: utter_continuar #TODO: Chequear esto
+  #- action: utter_continuar 
   #- action: action_reset
   - action: utter_opciones
 

@@ -84,31 +84,31 @@ responses:
   utter_tutorial:
   - text: "La duración del sonido es la clave para distinguir los tres tipos de estelas..."
 
-  # utter_pregunta_uno:
-  # - text: "¿Cuánto dura el sonido?"
-  #   buttons:
-  #   - title: Menos de un segundo
-  #     payload: /pregunta_dos{{"respuesta1":"Menos de 1 segundo"}}
-  #   - title: Entre uno y cinco segundos
-  #     payload: /pregunta_dos{{"respuesta1":"Entre 1 y 5 segundos"}}
-  #   - title: Mas de 9 segundos
-  #     payload: /pregunta_dos{{"respuesta1":"Mas de 9 segundos"}}
+  utter_pregunta_uno:
+  - text: "¿Cuánto dura el sonido?"
+    buttons:
+    - title: Menos de un segundo
+      payload: /pregunta_dos{{"respuesta1":"Menos de 1 segundo"}}
+    - title: Entre uno y cinco segundos
+      payload: /pregunta_dos{{"respuesta1":"Entre 1 y 5 segundos"}}
+    - title: Mas de 9 segundos
+      payload: /pregunta_dos{{"respuesta1":"Mas de 9 segundos"}}
 
-  # utter_pregunta_dos:
-  # - text: "Se escucha al principio un sonido corto y luego un silencio o un sonido menos intenso?"
-  #   buttons:
-  #   - title: Si
-  #     payload: \pregunta_tres{{"respuesta2":"Si"}}
-  #   - title: No
-  #     payload: \pregunta_tres{{"respuesta2":"No"}}
+  utter_pregunta_dos:
+  - text: "Se escucha al principio un sonido corto y luego un silencio o un sonido menos intenso?"
+    buttons:
+    - title: Si
+      payload: /pregunta_tres{{"respuesta2":"Si"}}
+    - title: No
+      payload: /pregunta_tres{{"respuesta2":"No"}}
     
-  # utter_pregunta_tres:
-  # - text: "¿Hay un sonido inicial con un tono distinto al resto?"
-  #   buttons:
-  #   - title: Si
-  #     payload: \action_post_api{{"respuesta3":"Si"}}
-  #   - title: No
-  #     payload: \action_post_api{{"respuesta3":"No"}}
+  utter_pregunta_tres:
+  - text: "¿Hay un sonido inicial con un tono distinto al resto?"
+    buttons:
+    - title: Si
+      payload: /post_api{{"respuesta3":"Si"}}
+    - title: No
+      payload: /post_api{{"respuesta3":"No"}}
     
   utter_continuar:
   - text: "¿Quieres seguir?"
