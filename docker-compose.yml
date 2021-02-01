@@ -4,7 +4,8 @@ services:
     container_name: TFG-rasa-server
     image: rasa/rasa:latest
     ports:
-      - 5005:5005
+      - 5006:5006
+      #- 5005:5005
     volumes:
       - .:/app
     command:

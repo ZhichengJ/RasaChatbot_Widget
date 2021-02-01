@@ -13,7 +13,6 @@
 action_endpoint:
   #Formato: http://nombreDelContenedor/webhook
 
-
   #url: "http://localhost:5055/webhook"  
   url: "http://action:5055/webhook"
 
