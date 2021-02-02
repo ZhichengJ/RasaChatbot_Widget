@@ -81,14 +81,32 @@ nlu:
     - mi nombre es [Marcos]{"entity":"nombre","value":"Marcos"}
     - mi nombre es [Sara]{"entity":"nombre","value":"Sara"}
     - mi nombre es [Alberto]{"entity":"nombre","value":"Alberto"}
+    - mi nombre es [Antonio]{"entity":"nombre","value":"Antonio"}
+    - mi nombre es [Jose]{"entity":"nombre","value":"Jose"}
+    - mi nombre es [Raquel]{"entity":"nombre","value":"Raquel"}
+    - mi nombre es [Adrián]{"entity":"nombre","value":"Adrián"}
+    - mi nombre es [Victor]{"entity":"nombre","value":"Victor"}
+    - mi nombre es [Esteban]{"entity":"nombre","value":"Esteban"}
     - yo me llamo [Marcos]{"entity":"nombre","value":"Marcos"}
     - yo me llamo [Sara]{"entity":"nombre","value":"Sara"}
     - yo me llamo [Alberto]{"entity":"nombre","value":"Alberto"}
+    - yo me llamo [Jose]{"entity":"nombre","value":"Jose"}
+    - yo me llamo [Antonio]{"entity":"nombre","value":"Antonio"}
+    - yo me llamo [Esteban]{"entity":"nombre","value":"Esteban"}
+    - yo me llamo [Angel]{"entity":"nombre","value":"Angel"}
     - me llamo [Marcos]{"entity":"nombre","value":"Marcos"}
     - me llamo [Sara]{"entity":"nombre","value":"Sara"}
     - me llamo [Paco]{"entity":"nombre","value":"paco"}
     - me llamo [Isabel]{"entity":"nombre","value":"isabel"}
     - me llamo [pedro]{"entity":"nombre","value":"Pedro"}
+    - me llamo [Antonio]{"entity":"nombre","value":"Antonio"}
+    - me llamo [Raquel]{"entity":"nombre","value":"Raquel"}
+    - me llamo [Noelia]{"entity":"nombre","value":"Noelia"}
+    - me llamo [Victor]{"entity":"nombre","value":"Victor"}
+    - me llamo [Manuel]{"entity":"nombre","value":"Manuel"}
+    - me llamo [Angel]{"entity":"nombre","value":"Angel"}
+    - soy [Marcos]{"entity":"nombre","value":"Marcos"}
+    - soy Antonio{"entity":"nombre","value":"Antonio"}
 
 - intent: mood_great
   examples: |
