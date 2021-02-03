@@ -2,15 +2,6 @@
 
 ---
 
-## Tabla de contenidos
-
-- [Introducción](#Introducción)
-- [About](#About)
-- [Despliegue](Despliegue)
-- [Equipo](Equipo)
-
----
-
 ## Introducción
 
 - El proyecto tiene como finalidad la implementación para ayudar a usuarios a clasificar sonidos de ecos captados mediante radiodetección.
