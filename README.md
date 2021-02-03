@@ -10,7 +10,7 @@
 
 ## About
 
-- Este proyecto ha sido desarrollado por [Marcos Pino](https://www.linkedin.com/in/marcos-pino-gamazo-800b4261/) como Trabajo de Fin de Grado en la [Universidad Politécnica de Madrid](https://www.upm.es/) para el grado de ingeniería informática de la [Escuela Técnica Superior de Ingenieros Informáticos](https://www.fi.upm.es) para el proyecto [Sonidos del Cielo](http://sonidosdelcielo.org/) del [Laboratorio de Ciencia Ciudadana](https://cslab-upm.github.io/index.html). La aplicación ***Chatbot Chatbot para Público Infantil para Clasificar Sonidos del Cielo***
+- Este proyecto ha sido desarrollado por [Marcos Pino](https://www.linkedin.com/in/marcos-pino-gamazo-800b4261/) como Trabajo de Fin de Grado en la [Universidad Politécnica de Madrid](https://www.upm.es/) para el grado de ingeniería informática de la [Escuela Técnica Superior de Ingenieros Informáticos](https://www.fi.upm.es) para el proyecto [Sonidos del Cielo](http://sonidosdelcielo.org/) del [Laboratorio de Ciencia Ciudadana](https://cslab-upm.github.io/index.html). La aplicación ***Chatbot Chatbot para Público Infantil para Clasificar Sonidos del Cielo*** tiene como finalidad la de ayudar a personas con poco contacto con la ciencia a participar en la clasificación de sonidos de ecos generados a partir de radiodetecciones. 
 
 ---
 
