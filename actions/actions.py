@@ -132,15 +132,15 @@ class action_dar_sonido(Action):
 # Post a la API con las respuestas del usuario
 ################################################
 
-def getClasificaciones(eco):
-    url = 'http://138.100.100.143:3001/ecos/' + eco
-    #url = 'http://127.0.0.1:3000/ecos/' + eco
-    #url = 'http://host.docker.internal:3000/ecos/' + eco  #Esta linea se utiliza en caso de que no se realice un despliegue en docker
-    r = requests.get(url,headers=headers)
-    decode = json.loads(r.text)
-    #logger.debug(str(r.text))
-    clasificaciones = decode["nClasificaciones"]
-    return clasificaciones
+# def getClasificaciones(eco):
+#     url = 'http://138.100.100.143:3001/ecos/' + eco
+#     #url = 'http://127.0.0.1:3000/ecos/' + eco
+#     #url = 'http://host.docker.internal:3000/ecos/' + eco  #Esta linea se utiliza en caso de que no se realice un despliegue en docker
+#     r = requests.get(url,headers=headers)
+#     decode = json.loads(r.text)
+#     #logger.debug(str(r.text))
+#     clasificaciones = decode["nClasificaciones"]
+#     return clasificaciones
 
 
 class action_post_api(Action):
@@ -154,7 +154,7 @@ class action_post_api(Action):
 
         query_Dict ={}
         eco = tracker.get_slot('eco')
-        nClasificaciones = getClasificaciones(eco) + 1
+        #nClasificaciones = getClasificaciones(eco) + 1
 
         #dispatcher.utter_message(nClasificaciones)
         
@@ -185,19 +185,19 @@ class action_post_api(Action):
         
         r = requests.post(url, data=json.dumps(query_Dict), headers=headers)
         #actualizamos la clasificacion
-        actualizarClasificacion(eco, nClasificaciones)
+        #actualizarClasificacion(eco, nClasificaciones)
         
         #Reseteamos los valores de los slots
         return [SlotSet("respuesta1",None),SlotSet("respuesta2",None),SlotSet("respuesta3",None),SlotSet("eco",None)]
 
-def actualizarClasificacion(eco, clasificaciones):
-    url = 'http://138.100.100.143:3001/ecos/' + eco
-    #url = 'http://127.0.0.1:3000/ecos/'+ eco  #Esta linea se utiliza en caso de que no se realice un despliegue en docker
-    #url = 'http://host.docker.internal:3000/ecos/'+ eco
+# def actualizarClasificacion(eco, clasificaciones):
+#     url = 'http://138.100.100.143:3001/ecos/' + eco
+#     #url = 'http://127.0.0.1:3000/ecos/'+ eco  #Esta linea se utiliza en caso de que no se realice un despliegue en docker
+#     #url = 'http://host.docker.internal:3000/ecos/'+ eco
 
-    #headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
-    query={}
-    query['nClasificaciones']=clasificaciones
-    #logger.debug("Respuesta")
-    r = requests.patch(url, data =json.dumps(query),headers=headers)
-    return
+#     #headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+#     query={}
+#     query['nClasificaciones']=clasificaciones
+#     #logger.debug("Respuesta")
+#     r = requests.patch(url, data =json.dumps(query),headers=headers)
+#     return
