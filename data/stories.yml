@@ -74,6 +74,11 @@ stories:
   - intent: no_seguir
   - action: action_reset
 
+- story: despedir
+  steps:
+  - intent: despedir
+  - action: utter_despedir
+
 #######Bifurcación antes de la segunda pregunta
   # - intent: affirm
   # - action: action_pregunta_dos

@@ -41,10 +41,11 @@ responses:
   - text: "¿Cómo te llamas?"
 
   utter_greet:
-  - text: "¡Hola, qué tal!"
-  - text: "¿Cómo va?"
-  - text: "¡Hola!"
-  - text: "¡Bienvenido a sonidos del cielo!"
+  - text: "¡Bienvenido! Me alegra verte, esto es Sonidos del Cielo, el proyecto de Ciencia Ciudadana para la clasificación de meteoros a partir de sus sonidos."
+  - text: "¡Hola! Bienvenido a Sonidos del Cielo, el proyecto de Ciencia Ciudadana para la clasificación de meteoros a través de sus sonidos. "
+  - text: "Bienvenido a Sonidos del Cielo, aquí podrás escuchar meteoros y ayudar a los expertos en su clasificación."
+  - text: "¡Hola! Esto es Sonidos del Cielo, el proyecto de Ciencia Ciudadana para la clasificación de meteoros a partir de sus sonidos. "
+  - text: "¡Me alegra verte! Esto es Sonidos del Cielo, el proyecto de Ciencia Ciudadana para la clasificación de meteoros a partir de sus sonidos. "
 
   utter_opciones:
   - text: "Tienes estas opciones {nombre}:"
@@ -142,6 +143,7 @@ responses:
     - title: "Deseo continuar clasificando"
       payload: /opciones
     - title: "¡Adiós!"
+      payload: /despedir
 
   utter_continuar:
   - text: "¿Quieres seguir?"
@@ -151,7 +153,11 @@ responses:
     - title: "Clasificar imágenes"
       payload: /clasificar_imagen
     - title: "No"
-      payload: /no_seguir
+      payload: /despedir
+
+  utter_despedir:
+  - text: "¡Hasta pronto!"
+  - text: "¡Bye!"
 
 
 slots:

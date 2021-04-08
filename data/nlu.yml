@@ -95,7 +95,10 @@ nlu:
     - soy [Marcos]{"entity":"nombre","value":"Marcos"}
     - soy [Antonio]{"entity":"nombre","value":"Antonio"}
 
-
+- intent: despedir
+  examples: |
+    - ¡Adiós!
+    - ¡Hasta luego!
 
 - intent: bot_challenge
   examples: |
