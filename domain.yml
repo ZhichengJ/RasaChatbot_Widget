@@ -150,7 +150,6 @@ responses:
     - title: "Deseo continuar clasificando"
       payload: /opciones
     - title: "¡Adiós!"
-      payload: /no_seguir
 
   utter_continuar:
   - text: "¿Quieres seguir?"
