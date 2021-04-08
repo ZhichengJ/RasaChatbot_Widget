@@ -29,9 +29,7 @@ stories:
   steps:
   - intent: clasificar_imagen
   - action: action_dar_imagenes
-  - action: utter_mostrar_ejemplo1
-  - action: utter_mostrar_ejemplo2
-  - action: utter_mostrar_ejemplo3
+  - action: utter_mostrar_ejemplo
   - action: utter_preguntar_lc
 
 

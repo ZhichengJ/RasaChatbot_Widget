@@ -98,17 +98,9 @@ responses:
       payload: /post_api{{"respuesta3":"No"}}
 
 
-  utter_mostrar_ejemplo1:
-  - text: "Visualiza las siguientes imágenes de curva de luz:\na)"
-    image: "https://i.imgur.com/EHfOyUP.png"
-
-  utter_mostrar_ejemplo2:
-  - text: "b"
-    image: "https://i.imgur.com/jxFov2V.png"
-
-  utter_mostrar_ejemplo3:
-  - text: "c"
-    image: "https://i.imgur.com/ZTXIdkp.png"
+  utter_mostrar_ejemplo:
+  - text: "Visualiza las siguientes imágenes de curva de luz:"
+    image: "https://i.imgur.com/G44v8Ub.jpg?4"
 
   utter_preguntar_lc:
   - text: "La curva de luz mostrada se parece más a ..."

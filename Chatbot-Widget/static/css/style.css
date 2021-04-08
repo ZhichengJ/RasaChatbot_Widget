@@ -409,9 +409,8 @@ div.content_data::-webkit-scrollbar {
 
 .imgcard {
     object-fit: cover;
-    width: auto;
-    height: 50%;
-    border-radius: 10px;
+    width: 100%;
+    border-radius: 5px;
     margin-left: 1%;
 }
 
