@@ -15,7 +15,7 @@ import json
 import time
 import requests
 import logging
-from datetime import datetime; 
+from datetime import datetime
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
@@ -56,6 +56,30 @@ class action_dar_sonido(Action):
         dispatcher.utter_message(decoded["Ruta"])
         dispatcher.utter_message(decoded["_id"])
         return [SlotSet("eco", decoded["_id"])]
+
+class action_dar_imagenes(Action):
+    def name(self):
+        return 'action_dar_imagenes'
+
+    def run(self, dispatcher, tracker, domain):
+        url = 'http://138.100.100.143:3001/espectrogramas'
+        r = requests.get(url, headers=headers)
+        decoded = json.loads(r.text)
+        n = random.randrange(1,len(decoded))
+        decoded = decoded[n]
+        dispatcher.utter_message(decoded["Imagen"])
+        dispatcher.utter_message(decoded["_id"])
+        url = 'http://138.100.100.143:3001/curvasdeluz'
+        r = requests.get(url, headers=headers)
+        decoded_lc = json.loads(r.text)
+        decoded = decoded_lc[n]
+        dispatcher.utter_message(decoded["Imagen"])
+        dispatcher.utter_message(decoded["_id"])
+        slots = []
+        slots.append(SlotSet("espectrogramas", decoded["_id"]))
+        slots.append(SlotSet("curvasdeluz", decoded["_id"]))
+        return slots
+
 
 # class ActionContinuar(Action):
 #     def name(self):

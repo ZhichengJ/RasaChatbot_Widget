@@ -50,6 +50,7 @@ body {
     margin-left: 25%;
 }
 
+
 .chats {
     /* display: none; */
     height: 385px;
@@ -187,12 +188,25 @@ textarea-webkit-scrollbar {
     /* display: none; */
     position: fixed;
     padding: 5px;
-    width: 10%;
+    width: 5%;
     bottom: 0;
     right: 0;
     cursor: pointer;
 }
-
+@media only screen and (max-width: 600px) {
+    .profile_div {
+        /* display: none; */
+        position: fixed;
+        padding: 5px;
+        width: 20%;
+        bottom: 0;
+        right: 0;
+        cursor: pointer;
+    }
+  }
+.tap-target-content{
+    z-index: 99;
+}
 
 /* css for dropdown menu of the bot */
 
@@ -395,7 +409,7 @@ div.content_data::-webkit-scrollbar {
 
 .imgcard {
     object-fit: cover;
-    width: 80%;
+    width: auto;
     height: 50%;
     border-radius: 10px;
     margin-left: 1%;
@@ -822,9 +836,10 @@ video:focus {
 /* Bot pop-up intro */
 
 .tap-target {
-    color: #fff;
+    color:#fff;
     background: #5a17ee;
 }
+
 
 .pdf_attachment {
     border: 0.5px solid #00000014;

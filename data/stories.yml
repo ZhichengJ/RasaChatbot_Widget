@@ -21,9 +21,18 @@ stories:
 
 - story: en caso de que el usuario quiera clasificar
   steps:
-  - intent: clasificar
+  - intent: clasificar_sonido
   - action: action_dar_sonido
   - action: utter_pregunta_uno
+
+- story: clasificar imagenes
+  steps:
+  - intent: clasificar_imagen
+  - action: action_dar_imagenes
+  - action: utter_mostrar_ejemplo1
+  - action: utter_mostrar_ejemplo2
+  - action: utter_mostrar_ejemplo3
+  - action: utter_preguntar_lc
 
 
 - story: segunda pregunta
@@ -36,13 +45,31 @@ stories:
   - intent: pregunta_tres
   - action: utter_pregunta_tres
 
+- story: pregunta espectrograma 1
+  steps:
+  - intent: preguntasp
+  - action: utter_preguntar_sp
+
+- story: pregunta espectrograma 2
+  steps:
+  - intent: preguntasp2
+  - action: utter_preguntar_sp2
+
+- story: pregunta curva de luz 2
+  steps:
+  - intent: preguntalc2
+  - action: utter_preguntar_lc2
+
+- story: termina clasificacion imagen
+  steps:
+  - intent: termina_clasif
+  - action: utter_termina_clasif
+
 - story: postear api
   steps:
   - intent: post_api
   - action: action_post_api
-  #- action: utter_continuar 
-  #- action: action_reset
-  - action: utter_opciones
+  - action: utter_termina_clasif
 
 - story: continuar
   steps:

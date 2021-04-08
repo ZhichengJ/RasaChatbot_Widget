@@ -57,7 +57,7 @@ function action_trigger() {
     // send an event to the bot, so that bot can start the conversation by greeting the user
     $.ajax({
         //url: `http://localhost:5005/conversations/${user_id}/execute`,
-        url: `http://138.100.100.143:5005/conversations/${user_id}/execute`,
+        url: `http://localhost:5005/conversations/${user_id}/execute`,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ "name": action_name, "policy": "MappingPolicy", "confidence": "0.98" }),
@@ -157,7 +157,7 @@ function send(message) {
 
     $.ajax({
         //url: "http://localhost:5005/webhooks/rest/webhook",
-        url: "http://138.100.100.143:5005/webhooks/rest/webhook",
+        url: "http://localhost:5005/webhooks/rest/webhook",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ message: message, sender: user_id }),
@@ -210,7 +210,6 @@ function setBotResponse(response) {
 
             //if we get response from Rasa
             for (i = 0; i < response.length; i++) {
-
                 //check if the response contains "text"
                 if (response[i].hasOwnProperty("text")) {
                     if(response[i].text.endsWith("wav")){
@@ -218,6 +217,12 @@ function setBotResponse(response) {
                         var BotResponse = '<figure><audio autoplay controls src="'+ response[i].text + '"></audio></figure>' + '</p><div class="clearfix">';
                         $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
                     }
+
+                    else if (response[i].text.endsWith("png")) {
+                        var BotResponse = '<div class="singleCard">' + '<img class="imgcard" src="' + response[i].text + '" >' + '</div><div class="clearfix">';
+                        $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
+                    }
+
                     else{
                         var BotResponse = '<img class="botAvatar" src="./static/img/sara_avatar.png"/><p class="botMsg">' + response[i].text + '</p><div class="clearfix"></div>';
                         $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
@@ -225,11 +230,11 @@ function setBotResponse(response) {
                 }
 
                 //check if the response contains "images"
+
                 if (response[i].hasOwnProperty("image")) {
                     var BotResponse = '<div class="singleCard">' + '<img class="imgcard" src="' + response[i].image + '">' + '</div><div class="clearfix">';
                     $(BotResponse).appendTo(".chats").hide().fadeIn(1000);
                 }
-
 
                 //check if the response contains "buttons" 
                 if (response[i].hasOwnProperty("buttons")) {

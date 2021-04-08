@@ -27,20 +27,6 @@ nlu:
     - Muestrame el tutorial
     - Tutorial
 
-- intent: goodbye
-  examples: |
-    - good afternoon
-    - cu
-    - good by
-    - cee you later
-    - good night
-    - bye
-    - goodbye
-    - have a nice day
-    - see you around
-    - bye bye
-    - see you later
-
 - intent: deny
   examples: |
     - no
@@ -66,7 +52,7 @@ nlu:
 
 - intent: sonidos_del_cielo
   examples: |
-    - De que trata el proyecto
+    - De qué trata el proyecto?
     - Que es sonidos del cielo
     - Sonidos del cielo
     - Que es el proyecto sonidos del cielo
@@ -78,6 +64,7 @@ nlu:
     - [Sara]{"entity":"nombre","value":"Sara"}
     - [Jose]{"entity":"nombre","value":"Jose"}
     - [Dexter]{"entity":"nombre","value":"Dexter"}
+    - [Jiang]{"entity":"nombre", "value":"Jiang"}
     - mi nombre es [Marcos]{"entity":"nombre","value":"Marcos"}
     - mi nombre es [Sara]{"entity":"nombre","value":"Sara"}
     - mi nombre es [Alberto]{"entity":"nombre","value":"Alberto"}
@@ -106,51 +93,9 @@ nlu:
     - me llamo [Manuel]{"entity":"nombre","value":"Manuel"}
     - me llamo [Angel]{"entity":"nombre","value":"Angel"}
     - soy [Marcos]{"entity":"nombre","value":"Marcos"}
-    - soy Antonio{"entity":"nombre","value":"Antonio"}
+    - soy [Antonio]{"entity":"nombre","value":"Antonio"}
 
-- intent: mood_great
-  examples: |
-    - perfect
-    - great
-    - amazing
-    - feeling like a king
-    - wonderful
-    - I am feeling very good
-    - I am great
-    - I am amazing
-    - I am going to save the world
-    - super stoked
-    - extremely good
-    - so so perfect
-    - so good
-    - so perfect
-    - estoy bien
-    - estoy genial
-    - estoy super bien
 
-- intent: mood_unhappy
-  examples: |
-    - my day was horrible
-    - I am sad
-    - I don't feel very well
-    - I am disappointed
-    - super sad
-    - I'm so sad
-    - sad
-    - very sad
-    - unhappy
-    - not good
-    - not very good
-    - extremly sad
-    - so saad
-    - so sad
-
-- intent: clasificar
-  examples: |
-    - clasificar
-    - deseo clasificar
-    - quiero clasificar
-    - vamos a clasificar
 
 - intent: bot_challenge
   examples: |
@@ -201,50 +146,40 @@ nlu:
     - mayor de nueve segundos
     - mayor de nueve
 
-- intent: clasificar
+- intent: clasificar_sonido
   examples: |
-    - clasificar
-    - deseo clasificar
-    - quiero clasificar
-    - vamos a clasificar
-    - jugar
-    - quiero jugar
+    - clasificar sonido
+    - deseo clasificar sonido
+    - quiero clasificar sonido
+    - vamos a clasificar sonido
+    - jugar a sonido
+    - quiero jugar con sonido
+
+- intent: clasificar_imagen
+  examples: |
+    - clasificar imagen
+    - deseo clasificar imagen
+    - quiero clasificar imagen
+    - vamos a clasificar imagen
+    - jugar a imagen
+    - quiero jugar con imagen
 
 - intent: pregunta_dos
-  examples: |
-    - dame la segunda pregunta
-    - quiero la segunda pregunta 
-    - pregunta dos
-    - pregunta 2
-    - segunda pregunta 
-    - 2ª pregunta
-    - 2 pregunta
-    - dos pregunta
-    - me puedes dar la segunda pregunta
-    - dame la pregunta dos
-    - dame la pregunta 2
 
 - intent: pregunta_tres
-  examples: |
-    - dame la tercera pregunta
-    - quiero la tercera pregunta 
-    - pregunta tres
-    - pregunta 3
-    - tercera pregunta 
-    - 3ª pregunta
-    - 3 pregunta
-    - tres pregunta
-    - me puedes dar la tercera pregunta
-    - dame la pregunta tres
-    - dame la pregunta 3 
 
-  
+- intent: preguntalc
+
+- intent: preguntalc2
+
+- intent: preguntasp
+
+- intent: preguntasp2
+
+- intent: termina_clasif
+
 - intent: post_api
-  examples: |
-    - post en api
-    - postear en api
-    - guardar en api
-    - post api
+
 
 - intent: otro_sonido
   examples: |

@@ -13,19 +13,21 @@ intents:
   - deny
   - sonidos_del_cielo
   - mi_nombre
-  - clasificar
+  - clasificar_imagen
+  - clasificar_sonido
   - menos_un_segundo
   - entre_uno_cinco
   - mas_de_nueve
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
   - bot_opciones
   - pregunta_dos
   - pregunta_tres
   - post_api
   - otro_sonido
   - no_seguir
+  - termina_clasif
+  - preguntalc2
+  - preguntasp
+  - preguntasp2
 entities:
   - nombre
   - respuesta1
@@ -35,47 +37,32 @@ entities:
 
 responses:
   utter_preguntar_nombre:
-  - text: "¿Cúal es tu nombre?"
-  - text: "¿Como te llamas?"
+  - text: "¿Cuál es tu nombre?"
+  - text: "¿Cómo te llamas?"
 
   utter_greet:
-  - text: "Hola, que tal"
-  - text: "Como va?"
-  - text: "Hola"
-
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
-
-  utter_did_that_help:
-  - text: "Did that help you?"
-
-  utter_happy:
-  - text: "{nombre} Great, carry on!"
-
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  - text: "¡Hola, qué tal!"
+  - text: "¿Cómo va?"
+  - text: "¡Hola!"
+  - text: "¡Bienvenido a sonidos del cielo!"
 
   utter_opciones:
   - text: "Tienes estas opciones {nombre}:"
     buttons:
       - title: "Tutorial"
-        payload: \tutorial
+        payload: /tutorial
       - title: "¿Qué es el proyecto Sonidos del Cielo?"
-        payload: \sonidos_del_cielo
-      - title: "Clasificar"
-        payload: \clasificar
-      # - title: "Salir"
-      #   payload: \action_restart
+        payload: /sonidos_del_cielo
+      - title: "Clasificar por sonido"
+        payload: /clasificar_sonido
+      - title: "Clasificar por imagen"
+        payload: /clasificar_imagen
 
   utter_eleccion:
   - text: "{nombre} ¿Qué quieres hacer?"
   - text: "¿Qué te apetece hacer {nombre}?"
   - text: ¿Qué te gustaria hacer {nombre}?
-  - text: "{nombre} ¿Qué te aptece hacer?"
+  - text: "{nombre} ¿Qué te apetece hacer?"
   - text: "{nombre} ¿Qué te gustaria hacer?"
 
   utter_sonidos_del_cielo:
@@ -87,19 +74,19 @@ responses:
   utter_pregunta_uno:
   - text: "¿Cuánto dura el sonido?"
     buttons:
-    - title: Menos de un segundo
+    - title: "Menos de un segundo"
       payload: /pregunta_dos{{"respuesta1":"Menos de 1 segundo"}}
-    - title: Entre uno y cinco segundos
+    - title: "Entre uno y cinco segundos"
       payload: /pregunta_dos{{"respuesta1":"Entre 1 y 5 segundos"}}
-    - title: Mas de 9 segundos
+    - title: "Más de 9 segundos"
       payload: /pregunta_dos{{"respuesta1":"Mas de 9 segundos"}}
 
   utter_pregunta_dos:
   - text: "Se escucha al principio un sonido corto y luego un silencio o un sonido menos intenso?"
     buttons:
-    - title: Si
+    - title: "Si"
       payload: /pregunta_tres{{"respuesta2":"Si"}}
-    - title: No
+    - title: "No"
       payload: /pregunta_tres{{"respuesta2":"No"}}
     
   utter_pregunta_tres:
@@ -109,14 +96,71 @@ responses:
       payload: /post_api{{"respuesta3":"Si"}}
     - title: No
       payload: /post_api{{"respuesta3":"No"}}
+
+
+  utter_mostrar_ejemplo1:
+  - text: "Visualiza las siguientes imágenes de curva de luz:\na)"
+    image: "https://i.imgur.com/EHfOyUP.png"
+
+  utter_mostrar_ejemplo2:
+  - text: "b"
+    image: "https://i.imgur.com/jxFov2V.png"
+
+  utter_mostrar_ejemplo3:
+  - text: "c"
+    image: "https://i.imgur.com/ZTXIdkp.png"
+
+  utter_preguntar_lc:
+  - text: "La curva de luz mostrada se parece más a ..."
+    buttons:
+    - title: "a"
+      payload: /preguntasp
+    - title: "b"
+      payload: /preguntasp
+    - title: "c"
+      payload: /preguntasp
     
+  utter_preguntar_sp:
+  - text: "¿Existe alguna discontinuidad en la base del espectrograma?"
+    buttons:
+    - title: "Sí"
+      payload: /preguntalc2
+    - title: "No"
+      payload: /preguntalc2
+
+  utter_preguntar_lc2:
+  - text: "¿Aparece un pico al inicio de la curva de luz?"
+    buttons:
+    - title: "Sí"
+      payload: /preguntasp2
+    - title: "No"
+      payload: /preguntasp2
+
+  utter_preguntar_sp2:
+  - text: "¿Existe un tramo horizontal en la base del espectrograma?"
+    buttons:
+    - title: "Sí"
+      payload: /termina_clasif
+    - title: "No"
+      payload: /termina_clasif
+
+  utter_termina_clasif:
+  - text: "Ha terminado la clasificación. ¡Muchas gracias por su participación!"
+    buttons:
+    - title: "Deseo continuar clasificando"
+      payload: /opciones
+    - title: "¡Adiós!"
+      payload: /no_seguir
+
   utter_continuar:
   - text: "¿Quieres seguir?"
     buttons:
-    - title: Si
-      payload: \clasificar
-    - title: No
-      payload: \no_seguir
+    - title: "Clasificar sonidos"
+      payload: /clasificar_sonido
+    - title: "Clasificar imágenes"
+      payload: /clasificar_imagen
+    - title: "No"
+      payload: /no_seguir
 
 
 slots:
@@ -138,9 +182,7 @@ slots:
 
 actions:
   - action_dar_sonido
-  - action_pregunta_uno
-  - action_pregunta_dos
-  - action_pregunta_tres
   - action_continuar
   - action_post_api
   - action_reset
+  - action_dar_imagenes
