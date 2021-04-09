@@ -62,22 +62,22 @@ class action_dar_imagenes(Action):
         return 'action_dar_imagenes'
 
     def run(self, dispatcher, tracker, domain):
-        url = 'http://138.100.100.143:3001/espectrogramas'
+        url = 'http://138.100.100.143:3001/curvasdeluz'
         r = requests.get(url, headers=headers)
         decoded = json.loads(r.text)
         n = random.randrange(1,len(decoded))
         decoded = decoded[n]
         dispatcher.utter_message(decoded["Imagen"])
         dispatcher.utter_message(decoded["_id"])
-        url = 'http://138.100.100.143:3001/curvasdeluz'
+        url = 'http://138.100.100.143:3001/espectrogramas'
         r = requests.get(url, headers=headers)
         decoded_lc = json.loads(r.text)
         decoded = decoded_lc[n]
         dispatcher.utter_message(decoded["Imagen"])
         dispatcher.utter_message(decoded["_id"])
         slots = []
-        slots.append(SlotSet("espectrogramas", decoded["_id"]))
         slots.append(SlotSet("curvasdeluz", decoded["_id"]))
+        slots.append(SlotSet("espectrogramas", decoded["_id"]))
         return slots
 
 

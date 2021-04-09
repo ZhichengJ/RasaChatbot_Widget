@@ -8,6 +8,13 @@ intents:
   - greet
   - opciones
   - tutorial
+  - tutorial_1
+  - tutorial_2
+  - tutorial_3
+  - tutorial_4
+  - tutorial_5
+  - tutorial_6
+  - tutorial_7
   - goodbye
   - affirm
   - deny
@@ -70,7 +77,61 @@ responses:
   - text: "Si quieres saber más sobre el proyecto entra aqui: http://sonidosdelcielo.org/"
 
   utter_tutorial:
-  - text: "La duración del sonido es la clave para distinguir los tres tipos de estelas..."
+  - text: "En la clasificación de meteoros mediante imágenes visualizarás dos imágenes. Estas imágenes son registros de ecos producidos cuando la señal que emite un radar se refleja hacia adelante en la estela ionizada de un meteoro. La primera imagen se trata de una curva de luz de radar. El eje horizontal es el tiempo, en segundos, y el eje vertical es el nivel máximo de señal recibido, medido en decibelios (dB)."
+    image: https://i.imgur.com/picydFw.png
+    buttons:
+    - title: "¿Y la segunda imagen?"
+      payload: /tutorial_1
+
+  utter_tutorial_1:
+  - text: "La segunda gráfica es un espectrograma. Esta gráfica representa tres variables: el eje vertical es el tiempo, contado en segundos desde una fecha determinada. El eje horizontal es la frecuencia, en hercios (Hz) alrededor de la frecuencia central que emite el radar (143,050 MHz). Lo que se representa en la gráfica es el nivel de señal en función de la frecuencia y el tiempo, mediante el código de colores que aparece a la derecha del cuadro."  
+    image: https://i.imgur.com/BFolr8v.png
+    buttons:
+    - title: "¡Entendido!"
+      payload: /tutorial_2
+
+  utter_tutorial_2:
+  - text: "Los responsables del proyecto ya tienen una primera clasificación automática de los ecos que están almacenado en una enorme base de datos, que crece a un ritmo de más de 200 eventos por día, pero hay características interesantes de algunos eventos que una máquina no es capaz de diferenciar. Necesitamos que nos ayudes a identificar esas características y a filtrar los eventos en los que aparecen, para un análisis posterior."
+    buttons:
+    - title: "¿Qué criterios se sigue para realizar la clasificación?"
+      payload: /tutorial_3
+
+
+  utter_tutorial_3:
+  - text: "Los ecos de meteoroide se producen antes que el eco de la estela, porque el meteoroide al atravesar la atmósfera va generando la estela. Eso quiere decir que se encontrarán en la parte izquierda de la curva de luz y en la parte de abajo del espectrograma. Esas posiciones indican el comienzo del evento.En ocasiones hay una separación de algunas décimas de segundo entre el eco del meteoroide y el eco de la estela, que se pueden apreciar en ambas gráficas."
+    image: https://i.imgur.com/rkXUNdQ.png
+    buttons:
+    - title: "Continuar"
+      payload: /tutorial_4
+
+  utter_tutorial_4:
+  - text: "El pico estrecho que se aprecia a la izquierda en esta curva de luz es típico de un eco de meteoroide. Después la señal baja de intensidad durante un breve intervalo de tiempo, y a continuación se recibe el eco de la estela durante unos segundos. No todos los picos duran tan poco como éste, pero generalmente su duración no supera uno o dos segundos, es decir, pueden ser un poco más anchos en la curva de luz."
+    buttons:
+    - title: "Continuar"
+      payload: /tutorial_5
+
+  utter_tutorial_5:
+  - text: "En el espectrograma se puede ver que justo en la parte de abajo hay señal en frecuencias diferentes de las que aparecen en el eco de la estela (línea vertical). También se aprecia una discontinuidad en la señal recibida. Para verlo mejor puedes hacer zoom en la imagen."
+    image: https://i.imgur.com/8Vux7jC.png
+    buttons:
+    - title: "Zoom"
+      payload: /tutorial_6
+
+  utter_tutorial_6:
+  - text: "El eje horizontal del espectrograma es frecuencia. Tener señal desplazada en frecuencia indica efecto Doppler, que se produce cuando el meteoroide se mueve a gran velocidad con respecto al emisor del radar y a la estación receptora."
+    image: https://i.imgur.com/vBnNS1p.png
+    buttons:
+    - title: "Continuar"
+      payload: /tutorial_7
+
+  utter_tutorial_7:
+  - text: "Ahora ya sabes qué buscamos, para qué sirve tu participación y cómo nos puedes ayudarnos. Tómate tu tiempo. Muchas gracias por tu colaboración."
+    buttons:
+    - title: "¡Listo para empezar!"
+      payload: /opciones
+    - title: "Repetir la explicación"
+      payload: /tutorial
+
 
   utter_pregunta_uno:
   - text: "¿Cuánto dura el sonido?"

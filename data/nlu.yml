@@ -27,6 +27,20 @@ nlu:
     - Muestrame el tutorial
     - Tutorial
 
+- intent: tutorial_1
+
+- intent: tutorial_2
+
+- intent: tutorial_3
+
+- intent: tutorial_4
+
+- intent: tutorial_5
+
+- intent: tutorial_6
+
+- intent: tutorial_7
+
 - intent: deny
   examples: |
     - no

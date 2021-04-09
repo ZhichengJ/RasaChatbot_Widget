@@ -17,7 +17,42 @@ stories:
   steps:
   - intent: tutorial
   - action: utter_tutorial
-  - action: utter_opciones
+
+- story: tutorial_1
+  steps:
+  - intent: tutorial_1
+  - action: utter_tutorial_1
+
+- story: tutorial_2
+  steps:
+  - intent: tutorial_2
+  - action: utter_tutorial_2
+
+- story: tutorial_3
+  steps:
+  - intent: tutorial_3
+  - action: utter_tutorial_3
+
+- story: tutorial_4
+  steps:
+  - intent: tutorial_4
+  - action: utter_tutorial_4
+
+- story: tutorial_5
+  steps:
+  - intent: tutorial_5
+  - action: utter_tutorial_5
+
+- story: tutorial_6
+  steps:
+  - intent: tutorial_6
+  - action: utter_tutorial_6
+
+- story: tutorial_7
+  steps:
+  - intent: tutorial_7
+  - action: utter_tutorial_7
+
 
 - story: en caso de que el usuario quiera clasificar
   steps:

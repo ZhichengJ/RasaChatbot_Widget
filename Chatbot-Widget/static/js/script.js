@@ -56,8 +56,8 @@ function action_trigger() {
 
     // send an event to the bot, so that bot can start the conversation by greeting the user
     $.ajax({
-        //url: `http://localhost:5005/conversations/${user_id}/execute`,
         url: `http://localhost:5005/conversations/${user_id}/execute`,
+        //url: `https://chatbots.ieef.upm.es:5006/conversations/${user_id}/execute`,
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ "name": action_name, "policy": "MappingPolicy", "confidence": "0.98" }),
@@ -111,15 +111,13 @@ $(".usrInput").on("keyup keypress", function(e) {
     }
 });
 
-$("#sendButton").on("click", function(e) {
+$("#sendButton").on("click touchstart", function(e) {
     var text = $(".usrInput").val();
     if (text == "" || $.trim(text) == "") {
         e.preventDefault();
         return false;
     } else {
-        //destroy the existing chart
-
-        chatChart.destroy();
+        
         $(".chart-container").remove();
         if (typeof modalChart !== 'undefined') { modalChart.destroy(); }
 
@@ -156,8 +154,8 @@ function scrollToBottomOfResults() {
 function send(message) {
 
     $.ajax({
-        //url: "http://localhost:5005/webhooks/rest/webhook",
         url: "http://localhost:5005/webhooks/rest/webhook",
+        //url: "https://chatbots.ieef.upm.es:5006/webhooks/rest/webhook",
         type: "POST",
         contentType: "application/json",
         data: JSON.stringify({ message: message, sender: user_id }),
