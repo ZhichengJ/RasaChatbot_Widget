@@ -96,7 +96,9 @@ stories:
 - story: termina clasificacion imagen
   steps:
   - intent: termina_clasif
+  - action: action_post_api_imagen
   - action: utter_termina_clasif
+
 
 - story: postear api
   steps:
@@ -113,54 +115,3 @@ stories:
   steps:
   - intent: despedir
   - action: utter_despedir
-
-#######Bifurcación antes de la segunda pregunta
-  # - intent: affirm
-  # - action: action_pregunta_dos
-  # - action: utter_continuar
-
-###### Negacion antes de la segunda pregunta
-  # - intent: deny
-  # - action: utter_opciones
-
-#######Bifurcación antes de la tercera pregunta
-  # - intent: affirm
-  # - action: action_pregunta_tres
-  # - action: utter_goodbye
-
-
-  #- action: action_pregunta_tres
-  #- action: utter_opciones
-  #- action: utter_pregunta_dos
-  # - action: action_listen
-  # - action: utter_pregunta_tres
-  # - action: action_listen
-  # - action: utter_continuar
-  #- intent: responder_uno
-  #- action: utter_continuar
-
-# - story: en caso de que no quiera clasificar 
-#   steps:
-#   - intent: deny
-#   - action: utter_opciones
-  
-# - story: sad path 1
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - action: utter_preguntar_nombre
-#   - intent: mood_unhappy
-#   - action: utter_cheer_up
-#   - action: utter_did_that_help
-#   - intent: affirm
-#   - action: utter_happy
-
-# - story: sad path 2
-#   steps:
-#   - intent: greet
-#   - action: utter_greet
-#   - intent: mood_unhappy
-#   - action: utter_cheer_up
-#   - action: utter_did_that_help
-#   - intent: deny
-#   - action: utter_goodbye

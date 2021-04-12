@@ -168,35 +168,35 @@ responses:
   - text: "La curva de luz mostrada se parece más a ..."
     buttons:
     - title: "a"
-      payload: /preguntasp
+      payload: /preguntasp{{"respuesta1":"a"}}
     - title: "b"
-      payload: /preguntasp
+      payload: /preguntasp{{"respuesta1":"b"}}
     - title: "c"
-      payload: /preguntasp
+      payload: /preguntasp{{"respuesta1":"c"}}
     
   utter_preguntar_sp:
   - text: "¿Existe alguna discontinuidad en la base del espectrograma?"
     buttons:
     - title: "Sí"
-      payload: /preguntalc2
+      payload: /preguntalc2{{"respuesta2":"Si"}}
     - title: "No"
-      payload: /preguntalc2
+      payload: /preguntalc2{{"respuesta2":"No"}}
 
   utter_preguntar_lc2:
   - text: "¿Aparece un pico al inicio de la curva de luz?"
     buttons:
     - title: "Sí"
-      payload: /preguntasp2
+      payload: /preguntasp2{{"respuesta3":"Si"}}
     - title: "No"
-      payload: /preguntasp2
+      payload: /preguntasp2{{"respuesta3":"No"}}
 
   utter_preguntar_sp2:
   - text: "¿Existe un tramo horizontal en la base del espectrograma?"
     buttons:
     - title: "Sí"
-      payload: /termina_clasif
+      payload: /termina_clasif{{"respuesta4":"Si"}}
     - title: "No"
-      payload: /termina_clasif
+      payload: /termina_clasif{{"respuesta4":"No"}}
 
   utter_termina_clasif:
   - text: "Ha terminado la clasificación. ¡Muchas gracias por su participación!"
@@ -233,6 +233,9 @@ slots:
 
   respuesta3:
     type: text
+
+  respuesta4:
+    type: text
     
   eco:
     type: text
@@ -244,3 +247,4 @@ actions:
   - action_post_api
   - action_reset
   - action_dar_imagenes
+  - action_post_api_imagen
