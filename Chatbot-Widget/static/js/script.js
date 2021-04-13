@@ -1,3 +1,4 @@
+
 //Bot pop-up intro
 document.addEventListener('DOMContentLoaded', function() {
     var elemsTap = document.querySelector('.tap-target');
@@ -6,7 +7,9 @@ document.addEventListener('DOMContentLoaded', function() {
     setTimeout(function() { instancesTap.close(); }, 4000);
 
 });
-
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 //initialization
 $(document).ready(function() {
@@ -24,16 +27,17 @@ $(document).ready(function() {
 
 
     //enable this if u have configured the bot to start the conversation. 
-    // showBotTyping();
-    // $("#userInput").prop('disabled', true);
+    $("#userInput").prop('disabled', true);
+    r = [{"text": "Hola! Soy un Chatbot!"}]
+    setBotResponse(r);
+    $("#userInput").prop('disabled', false);
 
     //global variables
-    action_name = "action_greet_user";
-    user_id = "marcos";
+    action_name = "action_greet";
+    user_id = "user";
 
     //if you want the bot to start the conversation
-    // action_trigger();
-
+    //action_trigger();
 })
 
 // ========================== restart conversation ========================
@@ -56,11 +60,11 @@ function action_trigger() {
 
     // send an event to the bot, so that bot can start the conversation by greeting the user
     $.ajax({
-        url: `http://localhost:5005/conversations/${user_id}/execute`,
+        url: 'http://localhost:5005/conversations/user/execute',
         //url: `https://chatbots.ieef.upm.es:5006/conversations/${user_id}/execute`,
         type: "POST",
         contentType: "application/json",
-        data: JSON.stringify({ "name": action_name, "policy": "MappingPolicy", "confidence": "0.98" }),
+        data: JSON.stringify({ "name": "action_greet", "policy": "MappingPolicy", "confidence": "0.98" }),
         success: function(botResponse, status) {
             console.log("Response from Rasa: ", botResponse, "\nStatus: ", status);
 
@@ -167,7 +171,7 @@ function send(message) {
                 $("#userInput").prop('disabled', false);
 
                 //if you want the bot to start the conversation after restart
-                // action_trigger();
+                //action_trigger();
                 return;
             }
             setBotResponse(botResponse);
@@ -179,7 +183,7 @@ function send(message) {
                 // $("#userInput").prop('disabled', false);
 
                 //if you want the bot to start the conversation after the restart action.
-                // action_trigger();
+                //action_trigger();
                 // return;
             }
 
